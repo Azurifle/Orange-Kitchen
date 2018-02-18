@@ -18,11 +18,11 @@ public class SixenseHand : SixenseObjectController
     
     protected override void Start() 
 	{
-		// get the Animator
-		m_animator = gameObject.GetComponent<Animator>();
-		m_initialRotation = transform.localRotation;
-		m_initialPosition = transform.localPosition;
-        
+        base.Start();
+
+        // get the Animator
+        m_animator = gameObject.GetComponent<Animator>();
+
         grabPoint = transform.GetChild(0);
         /*currentPosition = GameObject.Find("RightHandCollider").transform.position;
         currentRotation = GameObject.Find("RightHandCollider").transform.rotation;*/

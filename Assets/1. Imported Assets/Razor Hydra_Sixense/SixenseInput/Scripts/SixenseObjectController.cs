@@ -16,7 +16,8 @@ public class SixenseObjectController : MonoBehaviour {
 	{
 		m_initialRotation = this.gameObject.transform.localRotation;
 		m_initialPosition = this.gameObject.transform.localPosition;
-	}
+        //handRigidbody = GetComponent<Rigidbody>();//added by Dandy
+    }
 
     // Update is called once per frame
     protected virtual void Update ()//"protected virtual" was added by Dandy
@@ -32,8 +33,7 @@ public class SixenseObjectController : MonoBehaviour {
 			UpdateObject(controller);
 		}	
 	}
-	
-	
+		
 	void OnGUI()
 	{
 		if ( !m_enabled )
@@ -59,7 +59,7 @@ public class SixenseObjectController : MonoBehaviour {
 			m_initialPosition = this.gameObject.transform.localPosition;
 		}
 		
-		if ( m_enabled )
+		if ( m_enabled && !isColliding)
 		{
 			UpdatePosition( controller );
 			UpdateRotation( controller );
@@ -85,6 +85,32 @@ public class SixenseObjectController : MonoBehaviour {
 	{
 		this.gameObject.transform.localRotation = controller.Rotation * m_initialRotation;
 	}
-}
 
-//oncollision enter stop follow & leave resume follow
+    /*Dandy add __________________________________________*/
+
+    //private Rigidbody handRigidbody;
+    private bool isColliding = false;
+    private const string grabbableTag = "Grabbable";
+
+    //oncollision enter stop follow & leave resume follow
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(grabbableTag))
+            return;
+
+        isColliding = true;
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag(grabbableTag))
+            return;
+
+        isColliding = false;
+    }
+
+    //let handModel be child move hand follow razor
+
+    //or have an empty object (realHand) be parent and move it instead let this object (handModel) be rigidbody no gravity. when realHand not collide and handModel not far away snap it.
+    //or always check the realHand if it collide don't follow it until it exit
+}
