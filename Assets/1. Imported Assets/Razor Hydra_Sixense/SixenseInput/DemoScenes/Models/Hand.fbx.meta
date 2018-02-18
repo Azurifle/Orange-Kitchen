@@ -59,7 +59,12 @@ ModelImporter:
     4300000: Hand_MDL
     9500000: //RootNode
     13700000: Hand_MDL
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hand_SHD
+    second: {fileID: 2100000, guid: 0d46d759981b99e4e9191c3b09562c30, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -89,7 +94,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 4
     meshCompression: 0
     addColliders: 0
     importVisibility: 0

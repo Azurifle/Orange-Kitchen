@@ -50,49 +50,34 @@ public class SixenseHand : SixenseObjectController
     // Updates the animated object from controller input.
     protected void UpdateHandAnimation()
 	{
-		// Point
-		if ( Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.ONE) : m_controller.GetButton(SixenseButtons.TWO) )
-		{
+        // three fingers
+        float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, m_controller.Trigger, 0.1f);
+        m_fLastTriggerVal = fTriggerVal;
+
+        // Point
+        if ( (!m_controller.GetButton(SixenseButtons.BUMPER) && fTriggerVal > 0.01f) 
+            || Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.ONE) : m_controller.GetButton(SixenseButtons.TWO) )
 			m_animator.SetBool( "Point", true );
-		}
 		else
-		{
 			m_animator.SetBool( "Point", false );
-		}
 		
 		// Grip Ball
-		if ( Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.TWO) : m_controller.GetButton(SixenseButtons.ONE)  )
-		{
+		if ( Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.FOUR) : m_controller.GetButton(SixenseButtons.THREE)  )
 			m_animator.SetBool( "GripBall", true );
-		}
 		else
-		{
 			m_animator.SetBool( "GripBall", false );
-		}
 				
 		// Hold Book
 		if ( Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.THREE) : m_controller.GetButton(SixenseButtons.FOUR) )
-		{
 			m_animator.SetBool( "HoldBook", true );
-		}
 		else
-		{
 			m_animator.SetBool( "HoldBook", false );
-		}
-				
-		// Fist
-		float fTriggerVal = m_controller.Trigger;
-		fTriggerVal = Mathf.Lerp( m_fLastTriggerVal, fTriggerVal, 0.1f );
-		m_fLastTriggerVal = fTriggerVal;
-		
-		if ( fTriggerVal > 0.01f )
-		{
+
+        // Fist
+        if (m_controller.GetButton(SixenseButtons.BUMPER) && fTriggerVal > 0.01f )
 			m_animator.SetBool( "Fist", true );
-		}
 		else
-		{
 			m_animator.SetBool( "Fist", false );
-		}
 		
 		m_animator.SetFloat("FistAmount", fTriggerVal);
 		

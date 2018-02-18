@@ -86,3 +86,5 @@ public class SixenseObjectController : MonoBehaviour {
 		this.gameObject.transform.localRotation = controller.Rotation * m_initialRotation;
 	}
 }
+
+//oncollision enter stop follow & leave resume follow
