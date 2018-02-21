@@ -1,39 +1,31 @@
 using UnityEngine;
-using System.Collections;
 
-public class SixenseObjectController : MonoBehaviour {
+public class Chef_ObjectController : MonoBehaviour {
 
 	public SixenseHands			Hand;
-	public Vector3				Sensitivity = new Vector3( 0.01f, 0.01f, 0.01f );
-	
-	protected bool				m_enabled = false;
+	public Vector3				Sensitivity = new Vector3(0.004f, 0.004f, 0.004f);//0.002f changed by Dandy
+
+    protected bool				m_enabled = false;
 	protected Quaternion		m_initialRotation;
 	protected Vector3			m_initialPosition;
 	protected Vector3			m_baseControllerPosition;
-		
-	// Use this for initialization
-	protected virtual void Start() 
-	{
-		m_initialRotation = this.gameObject.transform.localRotation;
-		m_initialPosition = this.gameObject.transform.localPosition;
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
+    
+    protected virtual void Start()
+    {
+        m_initialRotation = transform.localRotation;
+        m_initialPosition = transform.localPosition;
+    }
+    
+    protected virtual void Update ()//"protected virtual" added by Dandy
+    {
 		if ( Hand == SixenseHands.UNKNOWN )
-		{
 			return;
-		}
 		
 		SixenseInput.Controller controller = SixenseInput.GetController( Hand );
 		if ( controller != null && controller.Enabled )  
-		{		
 			UpdateObject(controller);
-		}	
 	}
-	
-	
+		
 	void OnGUI()
 	{
 		if ( !m_enabled )
@@ -41,8 +33,7 @@ public class SixenseObjectController : MonoBehaviour {
 			GUI.Box( new Rect( Screen.width / 2 - 100, Screen.height - 40, 200, 30 ),  "Press Start To Move/Rotate" );
 		}
 	}
-	
-	
+		
 	protected virtual void UpdateObject(  SixenseInput.Controller controller )
 	{
 		if ( controller.GetButtonDown( SixenseButtons.START ) )
@@ -56,16 +47,15 @@ public class SixenseObjectController : MonoBehaviour {
 													controller.Position.z * Sensitivity.z );
 			
 			// this is the new start position
-			m_initialPosition = this.gameObject.transform.localPosition;
-		}
+			m_initialPosition = transform.localPosition;
+        }
 		
-		if ( m_enabled )
-		{
+		if ( m_enabled)
+        {
 			UpdatePosition( controller );
 			UpdateRotation( controller );
 		}
 	}
-	
 	
 	protected void UpdatePosition( SixenseInput.Controller controller )
 	{
@@ -77,12 +67,38 @@ public class SixenseObjectController : MonoBehaviour {
 		Vector3 vDeltaControllerPos = controllerPosition - m_baseControllerPosition;
 		
 		// update the localposition of the object
-		this.gameObject.transform.localPosition = m_initialPosition + vDeltaControllerPos;
+		transform.localPosition = m_initialPosition + vDeltaControllerPos;
 	}
-	
 	
 	protected void UpdateRotation( SixenseInput.Controller controller )
 	{
-		this.gameObject.transform.localRotation = controller.Rotation * m_initialRotation;
+		transform.localRotation = controller.Rotation * m_initialRotation;
 	}
-}
+
+    /*Dandy add __________________________________________*/
+
+    public Transform handModel;
+    
+    private const string grabbableTag = "Grabbable", handTag = "Hand";
+
+    //if realHand isColliding make handModel out of its child
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag(grabbableTag) || collider.gameObject.CompareTag(handTag))
+            return;
+        
+        handModel.SetParent(null);
+    }
+
+    //if realHand !isColliding make handModel snap to realHand and become child
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.gameObject.CompareTag(grabbableTag) || collider.gameObject.CompareTag(handTag))
+            return;
+        
+        handModel.SetParent(transform);
+        handModel.localPosition = new Vector3(0, 0.02f, -0.1f);
+        handModel.localRotation = Quaternion.identity;
+    }
+    
+}//class

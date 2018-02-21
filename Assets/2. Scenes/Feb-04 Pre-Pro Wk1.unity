@@ -1077,7 +1077,7 @@ GameObject:
   m_Component:
   - component: {fileID: 561385398}
   m_Layer: 0
-  m_Name: GrabPoint
+  m_Name: GrabPoint - Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1741,10 +1741,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1055664150}
+  - component: {fileID: 1055664151}
+  - component: {fileID: 1055664152}
+  - component: {fileID: 1055664153}
   m_Layer: 0
   m_Name: RealHand - Right
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Hand
+  m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1754,14 +1757,59 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1055664149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1814725699}
   m_Father: {fileID: 240061870}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.00001}
+--- !u!54 &1055664151
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1055664149}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1055664152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1055664149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b5af70b4cf0bf4ca16c8e25df430c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand: 2
+  Sensitivity: {x: 0.004, y: 0.004, z: 0.004}
+  handModel: {fileID: 1814725699}
+  m_animator: {fileID: 1814725703}
+  grabCenterPoint: {fileID: 2137045931}
+  minGrabDistance: 0.25
+  throwForce: 60
+--- !u!65 &1055664153
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1055664149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 0.06, z: 0.25}
+  m_Center: {x: -0.015, y: 0.016, z: 0}
 --- !u!1 &1086898527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,12 +1882,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1136658203}
   - component: {fileID: 1136658207}
-  - component: {fileID: 1136658205}
   - component: {fileID: 1136658206}
   - component: {fileID: 1136658204}
   m_Layer: 0
   m_Name: Hand - Left
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1851,8 +1898,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136658202}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.15, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02, z: -0.1}
   m_LocalScale: {x: -0.25000012, y: 0.25000012, z: 0.25}
   m_Children:
   - {fileID: 561385398}
@@ -1873,23 +1920,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.12, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0.23}
---- !u!114 &1136658205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114428307401105004, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1136658202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1358ef01f66886f4b9f02d8b6c2addbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hand: 1
-  Sensitivity: {x: 0.004, y: 0.004, z: 0.004}
-  minGrabDistance: 0.25
-  throwForce: 60
-  itemsParent: {fileID: 1629858572}
 --- !u!54 &1136658206
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1901,7 +1931,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2255,10 +2285,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1400959231}
+  - component: {fileID: 1400959232}
+  - component: {fileID: 1400959233}
+  - component: {fileID: 1400959234}
   m_Layer: 0
   m_Name: RealHand - Left
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_TagString: Hand
+  m_Icon: {fileID: 7240890024493199768, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2268,14 +2301,59 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400959230}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1136658203}
   m_Father: {fileID: 240061870}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1400959232
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1400959230}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1400959233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1400959230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3b5af70b4cf0bf4ca16c8e25df430c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hand: 1
+  Sensitivity: {x: 0.004, y: 0.004, z: 0.004}
+  handModel: {fileID: 1136658203}
+  m_animator: {fileID: 1136658207}
+  grabCenterPoint: {fileID: 561385398}
+  minGrabDistance: 0.25
+  throwForce: 60
+--- !u!65 &1400959234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1400959230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 0.06, z: 0.25}
+  m_Center: {x: 0.015, y: 0.016, z: -0}
 --- !u!1 &1422794824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,12 +3074,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1814725699}
   - component: {fileID: 1814725703}
-  - component: {fileID: 1814725701}
   - component: {fileID: 1814725702}
   - component: {fileID: 1814725700}
   m_Layer: 0
   m_Name: Hand - Right
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3013,8 +3090,8 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814725698}
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.15, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.02, z: -0.1}
   m_LocalScale: {x: 0.25000012, y: 0.25000012, z: 0.25}
   m_Children:
   - {fileID: 2137045931}
@@ -3035,23 +3112,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.12, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0.23}
---- !u!114 &1814725701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114192603588592290, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1814725698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1358ef01f66886f4b9f02d8b6c2addbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hand: 2
-  Sensitivity: {x: 0.004, y: 0.004, z: 0.004}
-  minGrabDistance: 0.25
-  throwForce: 60
-  itemsParent: {fileID: 1629858572}
 --- !u!54 &1814725702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3063,7 +3123,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -3476,7 +3536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137045931}
   m_Layer: 0
-  m_Name: GrabPoint
+  m_Name: GrabPoint - Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
