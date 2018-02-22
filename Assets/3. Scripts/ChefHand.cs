@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class ChefHand : Chef_ObjectController
 {
-	//public SixenseHands Hand;//m_hand
     public SixenseInput.Controller  m_controller = null;
     public Animator                 m_animator;
 
 	float m_fLastTriggerVal;
     
-    protected override void Update()//"override" was added by Dandy
+    void Update()//override SixenseObjectController Update
     {
 		if ( m_controller == null )
 		{
@@ -26,116 +25,79 @@ public class ChefHand : Chef_ObjectController
         if (m_controller != null && m_controller.Enabled)
             UpdateActionInput(m_controller); //Action update
     }
-
-    // Updates the animated object from controller input.
+    
     protected void UpdateHandAnimation()
 	{
-        // Point
-        if (Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.ONE) : m_controller.GetButton(SixenseButtons.TWO))
-        {
-            m_animator.SetBool("Point", true);
-        }
-        else
-        {
-            m_animator.SetBool("Point", false);
-        }
-
-        // Grip Ball
-        if (Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.TWO) : m_controller.GetButton(SixenseButtons.ONE))
-        {
-            m_animator.SetBool("GripBall", true);
-        }
-        else
-        {
-            m_animator.SetBool("GripBall", false);
-        }
-
-        // Hold Book
-        if (Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.THREE) : m_controller.GetButton(SixenseButtons.FOUR))
-        {
-            m_animator.SetBool("HoldBook", true);
-        }
-        else
-        {
-            m_animator.SetBool("HoldBook", false);
-        }
-
-        // Fist
-        float fTriggerVal = m_controller.Trigger;
-        fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, fTriggerVal, 0.1f);
-        m_fLastTriggerVal = fTriggerVal;
-
-        if (fTriggerVal > 0.01f)
-        {
-            m_animator.SetBool("Fist", true);
-        }
-        else
-        {
-            m_animator.SetBool("Fist", false);
-        }
-
-        m_animator.SetFloat("FistAmount", fTriggerVal);
-
-        // Idle
-        if (m_animator.GetBool("Fist") == false &&
-             m_animator.GetBool("HoldBook") == false &&
-             m_animator.GetBool("GripBall") == false &&
-             m_animator.GetBool("Point") == false)
-        {
-            m_animator.SetBool("Idle", true);
-        }
-        else
+        if (m_controller.GetButton(SixenseButtons.TRIGGER) )// Fist or Point
         {
             m_animator.SetBool("Idle", false);
+            m_animator.SetBool("GripBall", false);
+            m_animator.SetBool("HoldBook", false);
+
+            if (m_controller.GetButton(SixenseButtons.BUMPER) )
+            {
+                m_animator.SetBool("Point", false);
+                m_animator.SetBool("Fist", true);
+
+                float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, m_controller.Trigger, 0.1f);
+                m_animator.SetFloat("FistAmount", fTriggerVal);
+                m_fLastTriggerVal = fTriggerVal;
+
+                return;
+            }// Fist
+
+            m_animator.SetBool("Fist", false);
+            m_animator.SetBool("Point", true);
+
+            return;
         }
-        /*
-        // three fingers
-        float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, m_controller.Trigger, 0.1f);
-        m_fLastTriggerVal = fTriggerVal;
 
-        // Point
-        if ( (!m_controller.GetButton(SixenseButtons.BUMPER) && fTriggerVal > 0.01f) 
-            || Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.ONE) : m_controller.GetButton(SixenseButtons.TWO) )
-			m_animator.SetBool( "Point", true );
-		else
-			m_animator.SetBool( "Point", false );
-		
-		// Grip Ball
-		if ( Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.FOUR) : m_controller.GetButton(SixenseButtons.THREE)  )
-			m_animator.SetBool( "GripBall", true );
-		else
-			m_animator.SetBool( "GripBall", false );
-				
-		// Hold Book
-		if ( Hand == SixenseHands.RIGHT ? m_controller.GetButton(SixenseButtons.THREE) : m_controller.GetButton(SixenseButtons.FOUR) )
-			m_animator.SetBool( "HoldBook", true );
-		else
-			m_animator.SetBool( "HoldBook", false );
+        m_animator.SetBool("Fist", false);
+        m_animator.SetBool("Point", false);
 
-        // Fist
-        if (m_controller.GetButton(SixenseButtons.BUMPER) && fTriggerVal > 0.01f )
-			m_animator.SetBool( "Fist", true );
-		else
-			m_animator.SetBool( "Fist", false );
-		
-		m_animator.SetFloat("FistAmount", fTriggerVal);
-		
-		// Idle
-		if ( m_animator.GetBool("Fist") == false &&  
-			 m_animator.GetBool("HoldBook") == false && 
-			 m_animator.GetBool("GripBall") == false && 
-			 m_animator.GetBool("Point") == false )
-		{
-			m_animator.SetBool("Idle", true);
-		}
-		else
-		{
-			m_animator.SetBool("Idle", false);
-		}*/
-	}
+        switch (Hand)//GripBall or HoldBook
+        {
+            case SixenseHands.RIGHT: if (m_controller.GetButton(SixenseButtons.TWO))
+                {
+                    m_animator.SetBool("Idle", false);
+                    m_animator.SetBool("HoldBook", false);
+                    m_animator.SetBool("GripBall", true);
+                }
+                else if (m_controller.GetButton(SixenseButtons.THREE))
+                {
+                    m_animator.SetBool("Idle", false);
+                    m_animator.SetBool("GripBall", false);
+                    m_animator.SetBool("HoldBook", true);
+                }
+                break;
+            default:
+                if (m_controller.GetButton(SixenseButtons.ONE) )
+                {
+                    m_animator.SetBool("Idle", false);
+                    m_animator.SetBool("HoldBook", false);
+                    m_animator.SetBool("GripBall", true);
+                }
+                else if (m_controller.GetButton(SixenseButtons.FOUR) )
+                {
+                    m_animator.SetBool("Idle", false);
+                    m_animator.SetBool("GripBall", false);
+                    m_animator.SetBool("HoldBook", true);
+                }
+                break;
+        }
+        m_animator.SetBool("Idle", true);
+    }
+
+    private void SetAnimation(string state)
+    {
+        switch (state)
+        {
+            //case "Idle": m_animator.SetBool("Idle", true);
+        }
+    }
 
     //getters
-	public Quaternion InitialRotation
+    public Quaternion InitialRotation
 	{
 		get { return m_initialRotation; }
 	}	
