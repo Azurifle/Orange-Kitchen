@@ -5,8 +5,9 @@ public class ChefHand : Chef_ObjectController
     public SixenseInput.Controller  m_controller = null;
     public Animator                 m_animator;
 
-	float m_fLastTriggerVal;
-    
+	private float m_fLastTriggerVal;
+    private enum HandAnimation { Idle, Fist, Point, GripBall, HoldBook };
+
     void Update()//override SixenseObjectController Update
     {
 		if ( m_controller == null )
@@ -30,14 +31,9 @@ public class ChefHand : Chef_ObjectController
 	{
         if (m_controller.GetButton(SixenseButtons.TRIGGER) )// Fist or Point
         {
-            m_animator.SetBool("Idle", false);
-            m_animator.SetBool("GripBall", false);
-            m_animator.SetBool("HoldBook", false);
-
             if (m_controller.GetButton(SixenseButtons.BUMPER) )
             {
-                m_animator.SetBool("Point", false);
-                m_animator.SetBool("Fist", true);
+                SetAnimation(HandAnimation.Fist);
 
                 float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, m_controller.Trigger, 0.1f);
                 m_animator.SetFloat("FistAmount", fTriggerVal);
@@ -46,54 +42,36 @@ public class ChefHand : Chef_ObjectController
                 return;
             }// Fist
 
-            m_animator.SetBool("Fist", false);
-            m_animator.SetBool("Point", true);
-
+            SetAnimation(HandAnimation.Point);
             return;
         }
 
-        m_animator.SetBool("Fist", false);
-        m_animator.SetBool("Point", false);
-
-        switch (Hand)//GripBall or HoldBook
+        switch (Hand)//GripBall or HoldBook or Idle
         {
             case SixenseHands.RIGHT: if (m_controller.GetButton(SixenseButtons.TWO))
-                {
-                    m_animator.SetBool("Idle", false);
-                    m_animator.SetBool("HoldBook", false);
-                    m_animator.SetBool("GripBall", true);
-                }
+                    SetAnimation(HandAnimation.GripBall);
                 else if (m_controller.GetButton(SixenseButtons.THREE))
-                {
-                    m_animator.SetBool("Idle", false);
-                    m_animator.SetBool("GripBall", false);
-                    m_animator.SetBool("HoldBook", true);
-                }
+                    SetAnimation(HandAnimation.HoldBook);
+                else
+                    SetAnimation(HandAnimation.Idle);
                 break;
-            default:
-                if (m_controller.GetButton(SixenseButtons.ONE) )
-                {
-                    m_animator.SetBool("Idle", false);
-                    m_animator.SetBool("HoldBook", false);
-                    m_animator.SetBool("GripBall", true);
-                }
+            default: if (m_controller.GetButton(SixenseButtons.ONE) )
+                    SetAnimation(HandAnimation.GripBall);
                 else if (m_controller.GetButton(SixenseButtons.FOUR) )
-                {
-                    m_animator.SetBool("Idle", false);
-                    m_animator.SetBool("GripBall", false);
-                    m_animator.SetBool("HoldBook", true);
-                }
+                    SetAnimation(HandAnimation.HoldBook);
+                else
+                    SetAnimation(HandAnimation.Idle);
                 break;
         }
-        m_animator.SetBool("Idle", true);
     }
 
-    private void SetAnimation(string state)
+    private void SetAnimation(HandAnimation selected)
     {
-        switch (state)
-        {
-            //case "Idle": m_animator.SetBool("Idle", true);
-        }
+        m_animator.SetBool(selected.ToString(), true);
+
+        foreach (HandAnimation state in System.Enum.GetValues(typeof(HandAnimation) ) )
+            if(state != selected)
+                m_animator.SetBool(state.ToString(), false);
     }
 
     //getters
@@ -211,3 +189,8 @@ public class ChefHand : Chef_ObjectController
 
 }//class
 
+//OnCollisionEnter if trigger: isGrabBefore = true
+//OnCollisionStay if !isHoldingObject && !isGrabBefore && trigger && grabbable: grab
+
+//update if !trigger: isGrabBefore = false
+//throw to update
