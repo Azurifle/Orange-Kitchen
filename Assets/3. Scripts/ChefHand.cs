@@ -8,26 +8,22 @@ public class ChefHand : Chef_ObjectController
 	private float m_fLastTriggerVal;
     private enum HandAnimation { Idle, Fist, Point, GripBall, HoldBook };
 
-    void Update()//override SixenseObjectController Update
+    //private methods
+    private void Update()//override SixenseObjectController Update
     {
 		if ( m_controller == null )
-		{
 			m_controller = SixenseInput.GetController( Hand );
-		}
-		else if ( m_animator != null )
-		{
-            //UpdateHandAnimation();
-            UpdateObject(m_controller);//was added by Dandy
-        }
+		else
+            UpdateObject(m_controller);//changed by Dandy
 	}
 
     private void FixedUpdate()
     {
-        if (m_controller != null && m_controller.Enabled)
-            UpdateActionInput(m_controller); //Action update
+        if (isHoldingObject)
+            FindVelocity();
     }
-    
-    protected void UpdateHandAnimation()
+
+    private void UpdateHandAnimation()
 	{
         if (m_controller.GetButton(SixenseButtons.TRIGGER) )// Fist or Point
         {
@@ -94,7 +90,7 @@ public class ChefHand : Chef_ObjectController
     // Grabbable object must be within this distance from hand colliders to be picked up 
     // Force multiplyer for throwing objects
     
-    private bool        isHoldingObject = false;
+    private bool        isHoldingObject = false, isGrabBefore = false;
     private GameObject  closestObject = null;
     private Rigidbody   closestRigidbody = null;
     //private Grappling   closestGrappling = null;
@@ -104,22 +100,23 @@ public class ChefHand : Chef_ObjectController
 
     protected override void UpdateObject(SixenseInput.Controller controller)
     {
-        if (controller.Enabled)
+        if (controller.Enabled)//m_animator != null
         {
-            //UpdateAnimationInput(controller); //Animation update
-            UpdateHandAnimation();
-            //Action update move to fixedUpdate by Dandy
+            UpdateHandAnimation();//UpdateAnimationInput(controller);
+
+            if (!m_controller.GetButton(SixenseButtons.TRIGGER))
+                isGrabBefore = false;
+
+            UpdateActionInput(m_controller); //Action update
         }
 
-        base.UpdateObject(controller);
+        base.UpdateObject(controller);//press start & move hand
     }
 
-    protected void UpdateActionInput(SixenseInput.Controller controller)
+    private void UpdateActionInput(SixenseInput.Controller controller)//***
     {
         if (isHoldingObject)
         {
-            FindVelocity();
-
             if (!controller.GetButton(SixenseButtons.TRIGGER))
             {
                 closestObject.transform.SetParent(null);
@@ -166,7 +163,7 @@ public class ChefHand : Chef_ObjectController
     }
 
     //Calculate velocity of hand 
-    protected void FindVelocity()
+    private void FindVelocity()
     {
         if (Time.fixedDeltaTime != 0)//Time.deltaTime
         {
@@ -178,7 +175,7 @@ public class ChefHand : Chef_ObjectController
     }
 
     //Throw the held object once player lets go based on hand velocity 
-    protected void Throw()
+    private void Throw()
     {
         if (closestRigidbody)
         {
@@ -186,11 +183,21 @@ public class ChefHand : Chef_ObjectController
             closestRigidbody.AddForce(/*dir * handVelocity*/ handVector * throwForce);
         }
     }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(m_controller.GetButton(SixenseButtons.TRIGGER))
+            isGrabBefore = true;
+    }
+    
+    private void OnCollisionStay(Collision collision)
+    {
+        if (isHoldingObject || isGrabBefore || 
+            !m_controller.GetButton(SixenseButtons.TRIGGER) || 
+            !collision.gameObject.CompareTag(grabbableTag))
+            return;
+
+        //grab
+    }//***grab
 
 }//class
-
-//OnCollisionEnter if trigger: isGrabBefore = true
-//OnCollisionStay if !isHoldingObject && !isGrabBefore && trigger && grabbable: grab
-
-//update if !trigger: isGrabBefore = false
-//throw to update
