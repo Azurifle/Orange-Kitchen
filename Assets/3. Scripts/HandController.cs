@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Chef_ObjectController : SixenseObjectController
+public class HandController : SixenseObjectController
 {      		
     public Transform    handModel;
-    
-    protected const string grabbableTag = "Grabbable", handTag = "Hand";
+
+    public static string TAG_GRABBABLE = "Grabbable", TAG_Hand = "Hand";
     private List<Collider> collidings;
 
     private void Reset()
@@ -22,7 +22,7 @@ public class Chef_ObjectController : SixenseObjectController
     //if realHand isColliding make handModel out of its child
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag(grabbableTag) || collider.gameObject.CompareTag(handTag))
+        if (collider.gameObject.CompareTag(TAG_GRABBABLE) || collider.gameObject.CompareTag(TAG_Hand))
             return;
 
         collidings.Add(collider);

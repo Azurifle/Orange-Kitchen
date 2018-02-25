@@ -2,40 +2,92 @@
 using UnityEngine;
 
 public class Grappling : MonoBehaviour {
+
+    /* Razer Hydra Tutorial____________________________________
+    |
+    | https://www.slideshare.net/cjros/basic-vr-development-tutorial-integrating-oculus-rift-and-razer-hydra
+    |__________________________________________________________*/
+
+    public ChefHand hand;
+    public float throwForce = 60.0f;//3.0f
+
+    private bool isGrabBefore = false;
+    private Rigidbody grabedRigidbody = null;
+    private Vector3 handVelocity, handPrevious;
     
-    internal Vector3 GetPosition(SixenseHands hand)
+    private void Update()//Release Grab
     {
-        throw new NotImplementedException();
+        if (hand.IsGrabbing() )
+            return;
+
+        isGrabBefore = false;
+
+        if (grabedRigidbody)
+        {
+            grabedRigidbody.transform.SetParent(null);
+            grabedRigidbody.isKinematic = false;
+            grabedRigidbody.AddForce(handVelocity * throwForce);
+            grabedRigidbody = null;
+        }
     }
 
-    internal Vector3 GetRotation(SixenseHands hand)
+    private void FixedUpdate()//find velocity
     {
-        throw new NotImplementedException();
-    }
-}
+        if (!grabedRigidbody || Time.fixedDeltaTime <= 0)
+            return;
 
-/*not being use yet
-    
-    bool isGrabbedByLeft = false, isGrabbedByRight = false;
+        handVelocity = (transform.position - handPrevious) / Time.fixedDeltaTime;//Time.deltaTime
+        handPrevious = transform.position;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (hand.IsGrabbing() )
+            isGrabBefore = true;
+    }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (isGrabbedByLeft || isGrabbedByRight)
+        if (isGrabBefore || grabedRigidbody ||
+            !hand.IsGrabbing() ||
+            !collision.gameObject.CompareTag(HandController.TAG_GRABBABLE))
             return;
 
-        if (collision.gameObject.CompareTag("Hand"))
+        grabedRigidbody = collision.rigidbody;
+        grabedRigidbody.isKinematic = true;
+        grabedRigidbody.transform.SetParent(transform);
+
+        /*
+        GameObject[] grabbables = GameObject.FindGameObjectsWithTag("Grabbable");
+        float dist
+            , nearest = Vector3.Distance(grabbables[0].transform.position, grabCenterPoint.position);
+        if (nearest < minGrabDistance)
+            closestObject = grabbables[0];
+
+        for (int i = 1; i < grabbables.Length; ++i)
         {
-            if (SixenseInput.Controllers[0].GetButton(SixenseButtons.TRIGGER))
+            dist = Vector3.Distance(grabbables[i].transform.position, grabCenterPoint.position);
+            if (dist < minGrabDistance && dist < nearest)
             {
-                Debug.Log("grab by left");
-                isGrabbedByLeft = true;
-                transform.SetParent(collision.transform);
-            }
-            else if (SixenseInput.Controllers[1].GetButton(SixenseButtons.TRIGGER))
-            {
-                Debug.Log("grab by right");
-                isGrabbedByRight = true;
-                transform.SetParent(collision.transform);
+                closestObject = grabbables[i];
+                nearest = dist;
             }
         }
-    }*/
+
+        if (!closestObject)
+            return;
+
+        closestRigidbody = closestObject.GetComponent<Rigidbody>();
+        if (closestRigidbody && closestRigidbody.isKinematic)
+            return;
+
+        closestRigidbody.isKinematic = true;
+
+        closestObject.transform.SetParent(grabCenterPoint);
+        //closestObject.transform.localPosition = Vector3.zero;
+        //closestObject.transform.localRotation = Quaternion.identity;
+
+        isHoldingObject = true;*/
+    }
+    
+}
