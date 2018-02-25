@@ -40,20 +40,20 @@ public class Grappling : MonoBehaviour {
         handPrevious = transform.position;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         if (hand.IsGrabbing() )
             isGrabBefore = true;
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnTriggerStay(Collider collider)
     {
         if (isGrabBefore || grabedRigidbody ||
             !hand.IsGrabbing() ||
-            !collision.gameObject.CompareTag(HandController.TAG_GRABBABLE))
+            !collider.gameObject.CompareTag(HandController.TAG_GRABBABLE))
             return;
 
-        grabedRigidbody = collision.rigidbody;
+        grabedRigidbody = collider.GetComponent<Rigidbody>();
         grabedRigidbody.isKinematic = true;
         grabedRigidbody.transform.SetParent(transform);
 
