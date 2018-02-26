@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 4488568263233814}
   - component: {fileID: 54649594853176710}
   - component: {fileID: 114322010454376898}
-  - component: {fileID: 65812198467979548}
+  - component: {fileID: 65887792213921364}
   m_Layer: 0
   m_Name: RealHand - Left
   m_TagString: Hand
@@ -1755,8 +1755,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.06, z: 0.25}
-  m_Center: {x: -0.015, y: 0.016, z: 0}
+  m_Size: {x: 0.049, y: 0.024, z: 0.144}
+  m_Center: {x: -0.007, y: 0.023, z: -0.046}
 --- !u!65 &65582305451540010
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1781,18 +1781,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.2, z: 0.25}
   m_Center: {x: 0, y: -0.05, z: 0}
---- !u!65 &65812198467979548
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1816123379166014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.06, z: 0.25}
-  m_Center: {x: 0.015, y: 0.016, z: -0}
 --- !u!65 &65856445163151470
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1817,6 +1805,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.12, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0.23}
+--- !u!65 &65887792213921364
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816123379166014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.049, y: 0.024, z: 0.144}
+  m_Center: {x: 0.007, y: 0.023, z: -0.046}
 --- !u!95 &95290791288265196
 Animator:
   serializedVersion: 3
