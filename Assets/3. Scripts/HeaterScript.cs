@@ -21,7 +21,7 @@ public class HeaterScript : MonoBehaviour {
 	void Update () {
 		if (isOn)
         {
-            if (alpha.a < 255)
+            if (alpha.a < 1)
                 alpha.a += 0.01f;
             else
                 isHeat = true;
@@ -39,6 +39,6 @@ public class HeaterScript : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        isOn = !isOn;
+        isOn = !isOn; print(alpha.a);
     }
 }

@@ -322,6 +322,7 @@ Transform:
   - {fileID: 525872485}
   - {fileID: 1308126344}
   - {fileID: 1271771931}
+  - {fileID: 1292591278}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -736,6 +737,68 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5fa298a7a640a1846b3e21d413260baf, type: 3}
   m_PrefabInternal: {fileID: 212440312}
+--- !u!1001 &219978749
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 70321677}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1850
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -650
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_Name
+      value: Counter (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1001 &226797624
 Prefab:
   m_ObjectHideFlags: 0
@@ -1759,6 +1822,10 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 7b577cc13e87bf84891a2b8bf9fbed43, type: 3}
   m_PrefabInternal: {fileID: 1271771930}
+--- !u!4 &1292591278 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 400000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+  m_PrefabInternal: {fileID: 219978749}
 --- !u!1001 &1308126343
 Prefab:
   m_ObjectHideFlags: 0
@@ -2306,7 +2373,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7794118, g: 0.7794118, b: 0.7794118, a: 1}
+      maxColor: {r: 0.9485294, g: 0.9485294, b: 0.9485294, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2368,7 +2435,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2612,7 +2679,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 50
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -2776,7 +2843,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 3
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5690,13 +5757,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1800586459}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 93, y: 10, z: 245}
+  m_LocalRotation: {x: 0, y: -0.9471291, z: 0.3208528, w: 0}
+  m_LocalPosition: {x: 93, y: 11.71, z: 251.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 142.571, y: 0, z: 180}
 --- !u!1 &1926974319
 GameObject:
   m_ObjectHideFlags: 0
