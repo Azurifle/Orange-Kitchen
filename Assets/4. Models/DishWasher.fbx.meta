@@ -1,35 +1,42 @@
 fileFormatVersion: 2
-guid: d43f629399376394e83481a243d519fe
-timeCreated: 1520653844
+guid: e6e6b76dd748ca44d9cacf01ad258d64
+timeCreated: 1520753400
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: polySurface1
-    100002: polySurface2
-    100004: polySurface3
-    100006: //RootNode
-    100008: transform1
-    400000: polySurface1
-    400002: polySurface2
-    400004: polySurface3
-    400006: //RootNode
-    400008: transform1
-    2100000: phong4
-    2100002: phong1
+    100000: //RootNode
+    100002: group1
+    100004: pasted__pCylinder10
+    100006: pCube25
+    100008: pCube26
+    100010: pCube27
+    400000: //RootNode
+    400002: group1
+    400004: pasted__pCylinder10
+    400006: pCube25
+    400008: pCube26
+    400010: pCube27
+    2100000: lambert1
+    2100002: pasted__phong2
     2100004: phong2
-    2300000: polySurface1
-    2300002: polySurface2
-    2300004: polySurface3
-    3300000: polySurface1
-    3300002: polySurface2
-    3300004: polySurface3
-    4300000: polySurface1
-    4300002: polySurface2
-    4300004: polySurface3
+    2100006: phong1
+    2100008: phong4
+    2300000: pasted__pCylinder10
+    2300002: pCube25
+    2300004: pCube26
+    2300006: pCube27
+    3300000: pasted__pCylinder10
+    3300002: pCube25
+    3300004: pCube26
+    3300006: pCube27
+    4300000: pasted__pCylinder10
+    4300002: pCube25
+    4300004: pCube26
+    4300006: pCube27
     7400000: Open
-    7400002: Start
-    7400004: Close
+    7400002: Close
+    7400004: Start
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -87,10 +94,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Start
+      name: Close
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 2
+      firstFrame: 11
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -115,10 +122,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Close
+      name: Start
       takeName: Take 001
-      firstFrame: 11
-      lastFrame: 20
+      firstFrame: 1
+      lastFrame: 2
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

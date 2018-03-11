@@ -16,8 +16,13 @@ public class RefrigeratorScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetMouseButtonDown(0) && onSwitch)
-            anim.SetTrigger("Push");
-	}
+        {
+            if (anim.GetBool("On"))
+                anim.SetBool("On", false);
+            else
+                anim.SetBool("On", true);
+        }
+    }
 
     private void OnMouseEnter()
     {
