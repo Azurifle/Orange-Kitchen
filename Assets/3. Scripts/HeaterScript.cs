@@ -39,6 +39,6 @@ public class HeaterScript : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        isOn = !isOn; print(alpha.a);
+        isOn = !isOn;
     }
 }
