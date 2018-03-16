@@ -54,6 +54,9 @@ public class Grappling : MonoBehaviour {
             return;
 
         grabedRigidbody = collider.GetComponent<Rigidbody>();
+        if (grabedRigidbody == null)
+            return;
+
         grabedRigidbody.isKinematic = true;
         grabedRigidbody.transform.SetParent(transform);
 
