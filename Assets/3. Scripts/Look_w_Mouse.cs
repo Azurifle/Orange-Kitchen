@@ -30,6 +30,16 @@ public class Look_w_Mouse : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.W))
+            transform.Translate(new Vector3(0, 0, 0.3f) );
+        else if (Input.GetKey(KeyCode.S))
+            transform.Translate(new Vector3(0, 0, -0.3f));
+
+        if (Input.GetKey(KeyCode.A))
+            transform.Translate(new Vector3(-0.3f, 0, 0));
+        else if (Input.GetKey(KeyCode.D))
+            transform.Translate(new Vector3(0.3f, 0, 0));
+
         if (axes == RotationAxes.MouseXAndY)
         {
             rotAverageY = 0f;

@@ -41,4 +41,9 @@ public class HeaterScript : MonoBehaviour {
     {
         isOn = !isOn;
     }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        isOn = !isOn;
+    }
 }

@@ -7,15 +7,9 @@ public class RefrigeratorScript : MonoBehaviour {
     public Animator anim;
 
     private bool onSwitch = false;
-
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
+    
 	void Update () {
-        if (Input.GetMouseButtonDown(0) && onSwitch)
+        if ( Input.GetMouseButtonDown(0) && onSwitch)
         {
             if (anim.GetBool("On"))
                 anim.SetBool("On", false);
@@ -32,5 +26,11 @@ public class RefrigeratorScript : MonoBehaviour {
     private void OnMouseExit()
     {
         onSwitch = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(HandController.TAG_Hand))
+            anim.SetBool("On", !anim.GetBool("On"));
     }
 }
