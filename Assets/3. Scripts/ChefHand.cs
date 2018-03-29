@@ -28,7 +28,7 @@ public class ChefHand : HandController
         base.UpdateObject(controller);//press start & move hand
     }
 
-    private void Update()//override SixenseObjectController Update
+    protected void Update()//override SixenseObjectController Update
     {
         controller = SixenseInput.GetController(Hand);
         if (controller != null && controller.Enabled)
