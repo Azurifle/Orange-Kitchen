@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MouseLook : MonoBehaviour {
 
@@ -16,8 +14,15 @@ public class MouseLook : MonoBehaviour {
         rotateVertical = transform.localEulerAngles.x;
     }
 
+    private bool _isDisabled = true;
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+            _isDisabled = !_isDisabled;
+        else if (_isDisabled)
+            return;
+
         rotateHorizon += sensitivity * Input.GetAxis("Mouse X");
         rotateHorizon = Mathf.Clamp(rotateHorizon, maxLeft, maxRight);
 

@@ -6,7 +6,7 @@ public class ChefHand : HandController
 
 	private float m_fLastTriggerVal;
     private enum HandAnimation { Idle, Fist, Point, GripBall, HoldBook };
-    private SixenseInput.Controller controller;
+    private SixenseInput.Controller _controller;
 
     /* Razer Hydra Tutorial____________________________________
     |
@@ -15,35 +15,46 @@ public class ChefHand : HandController
 
     public bool IsGrabbing()
     {
-        if(controller == null)
+        if(_controller == null)
             return false;
-        return controller.GetButton(SixenseButtons.TRIGGER);
+        return _controller.GetButton(SixenseButtons.TRIGGER);
     }
 
-    protected override void UpdateObject(SixenseInput.Controller controller)
+    public float GetJoyStickX()
     {
-        if (controller.Enabled)//m_animator != null
-            UpdateHandAnimation();//UpdateAnimationInput(controller);
-
-        base.UpdateObject(controller);//press start & move hand
+        if (_controller == null)
+            return 0f;
+        return _controller.JoystickX;
+    }
+    public float GetJoyStickY()
+    {
+        if (_controller == null)
+            return 0f;
+        return _controller.JoystickY;
     }
 
     protected void Update()//override SixenseObjectController Update
     {
-        controller = SixenseInput.GetController(Hand);
-        if (controller != null && controller.Enabled)
-            UpdateObject(controller);
+        _controller = SixenseInput.GetController(Hand);
+        if (_controller != null && _controller.Enabled)
+            UpdateHandAnimation();
+    }
+
+    private void FixedUpdate()
+    {
+        if (_controller != null)
+            UpdateObject(_controller);
     }
 
     private void UpdateHandAnimation()
 	{
-        if (controller.GetButton(SixenseButtons.TRIGGER) )// Fist or Point
+        if (_controller.GetButton(SixenseButtons.TRIGGER) )// Fist or Point
         {
-            if (controller.GetButton(SixenseButtons.BUMPER) )
+            if (_controller.GetButton(SixenseButtons.BUMPER) )
             {
                 SetAnimation(HandAnimation.Fist);
 
-                float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, controller.Trigger, 0.1f);
+                float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, _controller.Trigger, 0.1f);
                 m_animator.SetFloat("FistAmount", fTriggerVal);
                 m_fLastTriggerVal = fTriggerVal;
 
@@ -56,16 +67,16 @@ public class ChefHand : HandController
 
         switch (Hand)//GripBall or HoldBook or Idle
         {
-            case SixenseHands.RIGHT: if (controller.GetButton(SixenseButtons.TWO))
+            case SixenseHands.RIGHT: if (_controller.GetButton(SixenseButtons.TWO))
                     SetAnimation(HandAnimation.GripBall);
-                else if (controller.GetButton(SixenseButtons.THREE))
+                else if (_controller.GetButton(SixenseButtons.THREE))
                     SetAnimation(HandAnimation.HoldBook);
                 else
                     SetAnimation(HandAnimation.Idle);
                 break;
-            default: if (controller.GetButton(SixenseButtons.ONE) )
+            default: if (_controller.GetButton(SixenseButtons.ONE) )
                     SetAnimation(HandAnimation.GripBall);
-                else if (controller.GetButton(SixenseButtons.FOUR) )
+                else if (_controller.GetButton(SixenseButtons.FOUR) )
                     SetAnimation(HandAnimation.HoldBook);
                 else
                     SetAnimation(HandAnimation.Idle);

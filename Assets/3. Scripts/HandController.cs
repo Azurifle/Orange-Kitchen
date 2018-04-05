@@ -5,7 +5,7 @@ public class HandController : SixenseObjectController
 {      		
     public Transform    handModel;
 
-    public static string TAG_GRABBABLE = "Grabbable", TAG_Hand = "Hand";
+    public static int LAYER_ITEM = 8, LAYER_HAND = 9;
     private List<Collider> collidings;
 
     private void Reset()
@@ -22,7 +22,7 @@ public class HandController : SixenseObjectController
     //if realHand isColliding make handModel out of its child
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag(TAG_GRABBABLE) || collider.gameObject.CompareTag(TAG_Hand))
+        if (collider.gameObject.layer == LAYER_ITEM)
             return;
 
         collidings.Add(collider);
@@ -32,9 +32,6 @@ public class HandController : SixenseObjectController
     //if realHand !isColliding make handModel snap to realHand and become child
     private void OnTriggerExit(Collider collider)
     {
-        if (!collidings.Contains(collider))
-            return;
-
         collidings.Remove(collider);
 
         if (collidings.Count == 0)

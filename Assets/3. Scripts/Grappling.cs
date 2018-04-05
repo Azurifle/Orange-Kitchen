@@ -50,7 +50,7 @@ public class Grappling : MonoBehaviour {
     {
         if (isGrabBefore || grabedRigidbody ||
             !hand.IsGrabbing() ||
-            !collider.gameObject.CompareTag(HandController.TAG_GRABBABLE))
+            !(collider.gameObject.layer == HandController.LAYER_ITEM) )
             return;
 
         grabedRigidbody = collider.GetComponent<Rigidbody>();

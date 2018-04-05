@@ -30,7 +30,7 @@ public class RefrigeratorScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(HandController.TAG_Hand))
+        if (other.gameObject.layer == HandController.LAYER_HAND)
             anim.SetBool("On", !anim.GetBool("On"));
     }
 }

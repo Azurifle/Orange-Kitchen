@@ -15,7 +15,7 @@ public class PorkPiece : MonoBehaviour {//not working yet
         if (knife == null)
             return;
 
-        gameObject.tag = HandController.TAG_GRABBABLE;
+        //gameObject.tag = HandController.TAG_GRABBABLE;
         transform.parent = null;
         collision.rigidbody.isKinematic = false;
         isFree = true;
