@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MouseLook : MonoBehaviour {
+public class MouseLook_n_Fly : MonoBehaviour {
 
     public float sensitivity = 9F//15
         , maxLeft = -45F, maxRight = 225F

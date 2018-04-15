@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LockedRay : MonoBehaviour
+public class LockRay : MonoBehaviour
 {
     public ChefHand realHand;
     public Transform virtualHand;
@@ -10,9 +10,8 @@ public class LockedRay : MonoBehaviour
     public float orbSpeed = 5f;
     public Material selectedColor, targetedColor, originalColor;
     
-    private RaycastHit[] _items;
+    private List<LockRayItem> _lockRayItems;
     private float _startHandZ, _startOrbZ, _lastHandZ;
-    private List<MeshRenderer> _itemColors;
     private int _index = 0, _mode = 0;
     private const int NORMAL = 0, RAYCASTING = 1, SELECTING = 2, GRABBING = 3;
     /*__Mode________________________________________________________________________
@@ -26,7 +25,7 @@ public class LockedRay : MonoBehaviour
     private void Start()
     {
         _startOrbZ = orb.localPosition.z;
-        _itemColors = new List<MeshRenderer>();
+        _lockRayItems = new List<LockRayItem>();
     }
 
     private void Update()
@@ -36,15 +35,13 @@ public class LockedRay : MonoBehaviour
             case NORMAL: if (realHand.IsGrabbing())//could change to use listener instead
                 {
                     ray.enabled = true;
+                    _lockRayItems.Clear();
                     _mode = RAYCASTING;
                 }
                 break;
             case RAYCASTING: if (!realHand.IsGrabbing())
                 {
-                    _items = Physics.RaycastAll(transform.position, transform.forward
-                    , ray.GetPosition(1).z, LayerMask.GetMask("Item"));
-
-                    if (_items.Length <= 0)
+                    if (_lockRayItems == null || _lockRayItems.Count <= 0)
                     {
                         ray.enabled = false;
                         _mode = NORMAL;
@@ -56,13 +53,13 @@ public class LockedRay : MonoBehaviour
                 }
                 break;
             case SELECTING: if (realHand.IsGrabbing())
-                {
+                {/*
                     foreach (MeshRenderer item in _itemColors)
                     {
                         item.material = originalColor;
-                    }
+                    }*/
 
-                    _items[_index].transform.SetParent(transform);
+                    _lockRayItems[_index].transform.SetParent(transform);
                     transform.SetParent(virtualHand);
                     transform.localPosition = Vector3.zero;
                     transform.localRotation = Quaternion.identity;
@@ -72,7 +69,7 @@ public class LockedRay : MonoBehaviour
                 break;
             case GRABBING: if (!realHand.IsGrabbing())
                 {
-                    _itemColors[_index].transform.SetParent(null);
+                    _lockRayItems[_index].transform.SetParent(null);
                     ray.enabled = false;
                     _mode = NORMAL;
                 }
@@ -80,30 +77,46 @@ public class LockedRay : MonoBehaviour
         }//switch mode
     }
 
-    private void FixedUpdate()//selecting
+    private void FixedUpdate()//moving hand ***
     {
-        if (_mode != SELECTING || Time.fixedDeltaTime <= 0)
-            return;
-        
-        orb.localPosition = new Vector3(0, 0, Mathf.Clamp(_startOrbZ + (
-            (realHand.transform.localPosition.z - _startHandZ) * orbSpeed), 0, ray.GetPosition(1).z));
-        
-        int oldIndex = _index;
-        _index = 0;
-
-        float minDistance = (_items[0].transform.position - orb.position).magnitude;
-        for (int i = 1; i < _items.Length; ++i)
+        switch (_mode)
         {
-            if ((_items[i].transform.position - orb.position).magnitude < minDistance)
-            {
-                _index = i;
-            }
-        }
+            case RAYCASTING:
+                RaycastHit[] rayeds = Physics.RaycastAll(transform.position, transform.forward
+                    , ray.GetPosition(1).z, LayerMask.GetMask("Item"));
+                if (rayeds.Length <= 0)
+                {
+                    break;
+                }
+                
+                foreach (RaycastHit hit in rayeds)//tell items that you have been rayed!
+                {
+                    _lockRayItems.Add(hit.transform.GetComponent<LockRayItem>() );
+                    _lockRayItems[_lockRayItems.Count - 1].Rayed();//***
+                }
+                break;
 
-        if (oldIndex != _index)
-        {
-            _itemColors[oldIndex].material = targetedColor;
-            _itemColors[_index].material = selectedColor;
+            case SELECTING: orb.localPosition = new Vector3(0, 0, Mathf.Clamp(_startOrbZ + (
+                (realHand.transform.localPosition.z - _startHandZ) * orbSpeed), 0, ray.GetPosition(1).z));
+
+                int oldIndex = _index;
+                _index = 0;
+                
+                float minDistance = (_lockRayItems[0].transform.position - orb.position).magnitude;
+                for (int i = 1; i < _lockRayItems.Count; ++i)
+                {
+                    if ((_lockRayItems[i].transform.position - orb.position).magnitude < minDistance)
+                    {
+                        _index = i;
+                    }
+                }
+
+                if (oldIndex != _index)
+                {
+                    //_itemColors[oldIndex].material = targetedColor;
+                    //_itemColors[_index].material = selectedColor;
+                }
+                break;
         }
     }
 
@@ -113,13 +126,12 @@ public class LockedRay : MonoBehaviour
         orb.transform.localPosition = new Vector3(0, 0, _startOrbZ);
         orb.gameObject.SetActive(true);
         transform.SetParent(null);
-
-        _itemColors.Clear();
+        
         SelectClosestTarget();
     }
 
     private void SelectClosestTarget()
-    {
+    {/*
         _index = 0;
         SwitchToTargetedColor(0);
 
@@ -133,12 +145,13 @@ public class LockedRay : MonoBehaviour
             }
         }
         
-        _itemColors[_index].material = selectedColor;
+        _itemColors[_index].material = selectedColor;*/
     }
-
-    private void SwitchToTargetedColor(int i)
-    {
-        _itemColors.Add(_items[i].transform.GetComponent<MeshRenderer>());
-        _itemColors[i].material = targetedColor;
-    }
-}
+     /*
+     private void SwitchToTargetedColor(int i)
+     {
+         _itemColors.Add(_items[i].transform.GetComponent<MeshRenderer>());
+         _itemColors[i].material = targetedColor;
+     }
+     */
+}//class
