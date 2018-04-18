@@ -6,9 +6,7 @@ public class LockRay : MonoBehaviour
     public ChefHand realHand;
     public Transform virtualHand;
     public LineRenderer ray;
-    public Transform orb;
-    public float orbSpeed = 5f;
-    public Material selectedColor, targetedColor, originalColor;
+    public LockRayOrb orb;
     
     private List<LockRayItem> _lockRayItems;
     private float _startHandZ, _startOrbZ, _lastHandZ;
@@ -24,7 +22,6 @@ public class LockRay : MonoBehaviour
 
     private void Start()
     {
-        _startOrbZ = orb.localPosition.z;
         _lockRayItems = new List<LockRayItem>();
     }
 
@@ -91,14 +88,13 @@ public class LockRay : MonoBehaviour
                 
                 foreach (RaycastHit hit in rayeds)//tell items that you have been rayed!
                 {
-                    _lockRayItems.Add(hit.transform.GetComponent<LockRayItem>() );
-                    _lockRayItems[_lockRayItems.Count - 1].Rayed();//***
+                    hit.transform.GetComponent<LockRayItem>().Rayed(ref _lockRayItems);//***
                 }
                 break;
 
-            case SELECTING: orb.localPosition = new Vector3(0, 0, Mathf.Clamp(_startOrbZ + (
+            case SELECTING: /*orb.localPosition = new Vector3(0, 0, Mathf.Clamp(_startOrbZ + (
                 (realHand.transform.localPosition.z - _startHandZ) * orbSpeed), 0, ray.GetPosition(1).z));
-
+                
                 int oldIndex = _index;
                 _index = 0;
                 
@@ -115,7 +111,7 @@ public class LockRay : MonoBehaviour
                 {
                     //_itemColors[oldIndex].material = targetedColor;
                     //_itemColors[_index].material = selectedColor;
-                }
+                }*/
                 break;
         }
     }
@@ -123,11 +119,9 @@ public class LockRay : MonoBehaviour
     private void SetupSelection()
     {
         _startHandZ = realHand.transform.localPosition.z;
-        orb.transform.localPosition = new Vector3(0, 0, _startOrbZ);
         orb.gameObject.SetActive(true);
+        orb.ResetPosition();
         transform.SetParent(null);
-        
-        SelectClosestTarget();
     }
 
     private void SelectClosestTarget()
@@ -146,7 +140,7 @@ public class LockRay : MonoBehaviour
         }
         
         _itemColors[_index].material = selectedColor;*/
-    }
+        }
      /*
      private void SwitchToTargetedColor(int i)
      {

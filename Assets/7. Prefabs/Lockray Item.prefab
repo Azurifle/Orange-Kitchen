@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33418435477565104}
   - component: {fileID: 65513909087953470}
   - component: {fileID: 23191191554554940}
+  - component: {fileID: 114116441760811408}
   m_Layer: 8
   m_Name: Lockray Item
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387841175139632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 81.88, y: 10.27, z: 253.61}
   m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114116441760811408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387841175139632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a66a6bd2078f8a74691538cc493bf8fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedColor: {fileID: 2100000, guid: 8c3183bfb58fd974b8000b9af2a81b0b, type: 2}
+  targetedColor: {fileID: 2100000, guid: 2f72430a9f8806747a7bb32ee67e56f3, type: 2}

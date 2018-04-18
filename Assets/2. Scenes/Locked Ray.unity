@@ -910,18 +910,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 4932299509791398, guid: 2a5364eb838ec204dbca3126e3356222, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 4932299509791398, guid: 2a5364eb838ec204dbca3126e3356222, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 4932299509791398, guid: 2a5364eb838ec204dbca3126e3356222, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.65
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a5364eb838ec204dbca3126e3356222, type: 2}
   m_IsPrefabParent: 0
@@ -4787,9 +4775,6 @@ MonoBehaviour:
   ray: {fileID: 1139684268}
   orb: {fileID: 1964621725}
   orbSpeed: 20
-  selectedColor: {fileID: 2100000, guid: 8c3183bfb58fd974b8000b9af2a81b0b, type: 2}
-  targetedColor: {fileID: 2100000, guid: 2f72430a9f8806747a7bb32ee67e56f3, type: 2}
-  originalColor: {fileID: 2100000, guid: 9ed3e57ffc38d114eb10ffe940151474, type: 2}
 --- !u!120 &1139684268
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -6526,7 +6511,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -173473051
+  randomSeed: 405748170
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10888,6 +10873,7 @@ GameObject:
   - component: {fileID: 1964621725}
   - component: {fileID: 1964621727}
   - component: {fileID: 1964621726}
+  - component: {fileID: 1964621728}
   m_Layer: 0
   m_Name: Lock Orb
   m_TagString: Untagged
@@ -10949,6 +10935,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1964621724}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1964621728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1964621724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7140c4fef2dad3439329381c8fcc13c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1968638872
 GameObject:
   m_ObjectHideFlags: 0
