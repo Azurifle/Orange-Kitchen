@@ -13,7 +13,7 @@ public class ChefHand : HandController
     | https://www.slideshare.net/cjros/basic-vr-development-tutorial-integrating-oculus-rift-and-razer-hydra
     |__________________________________________________________*/
 
-    public bool IsGrabbing()
+    public bool IsPointing()
     {
         if(_controller == null)
             return false;
