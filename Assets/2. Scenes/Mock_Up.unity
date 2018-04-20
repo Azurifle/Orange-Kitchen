@@ -8989,6 +8989,11 @@ Prefab:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 114664550213690620, guid: dc877e2422232c043963178f39a43c94,
+        type: 2}
+      propertyPath: WhiteBoard
+      value: 
+      objectReference: {fileID: 525872486}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc877e2422232c043963178f39a43c94, type: 2}
   m_IsPrefabParent: 0

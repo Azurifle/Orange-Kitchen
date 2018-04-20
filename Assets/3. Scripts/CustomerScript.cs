@@ -6,6 +6,7 @@ public class CustomerScript : MonoBehaviour {
 
     public GameObject Door;
     public GameObject SpwnMark;
+    public GameObject WhiteBoard;
     public GameObject[] SeatMark;
 
     public bool RealOne;
@@ -13,8 +14,10 @@ public class CustomerScript : MonoBehaviour {
     private Animator doorAnim;
 
     private SpawnScript spwn;
+    private WhiteboardScript wBoard;
 
     private bool atSeat = false;
+    private bool order = false;
 
     private int target;
 
@@ -22,6 +25,8 @@ public class CustomerScript : MonoBehaviour {
     void Start () {
         doorAnim = Door.GetComponent<Animator>();
         spwn = SpwnMark.GetComponent<SpawnScript>();
+        wBoard = WhiteBoard.GetComponent<WhiteboardScript>();
+
         target = SpawnScript.chairNo;
     }
 	
@@ -38,6 +43,12 @@ public class CustomerScript : MonoBehaviour {
             else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, spwn.Target[target].transform.position, 10 * Time.deltaTime);
+            }
+            else if (!order)
+            {
+                order = true;
+
+                wBoard.TakeOrder();
             }
         }
     }
