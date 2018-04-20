@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class LockRayItem : MonoBehaviour
 {
-    public Material selectedColor, targetedColor;
+    public Material targetedColor, selectedColor;
 
     private MeshRenderer meshRenderer;
     private Material originalColor;
@@ -11,8 +11,6 @@ public class LockRayItem : MonoBehaviour
 
     private const int NO_COUNTDOWN = 0, RAYED = 1, SELECTED = 2;
     private int _mode = NO_COUNTDOWN;
-
-    private List<LockRayItem> _lockRayItems;
 
     private void Start()
     {
@@ -24,35 +22,37 @@ public class LockRayItem : MonoBehaviour
     {
         switch (_mode)
         {
-            case RAYED:
-                CountDownTo(originalColor);
+            case RAYED: _countDown -= Time.deltaTime;
+                if (_countDown <= 0)
+                {
+                    meshRenderer.material = originalColor;
+                    _mode = NO_COUNTDOWN;
+                }
                 break;
-            case SELECTED:
-                CountDownTo(targetedColor);
+            case SELECTED: _countDown -= Time.deltaTime;
+                if (_countDown <= 0)
+                {
+                    meshRenderer.material = targetedColor;
+                    _mode = NO_COUNTDOWN;
+                }
                 break;
         }
     }
 
-    private void CountDownTo(Material color)
+    internal void Rayed()
     {
-        _countDown -= Time.deltaTime;
-        if (_countDown <= 0)
-        {
-            meshRenderer.material = color;
-            _mode = NO_COUNTDOWN;
-        }
-    }
-
-    internal void Rayed(ref List<LockRayItem> lockRayItems)
-    {
-        _lockRayItems = lockRayItems;
-        _lockRayItems.Add(this);//***
         if (_mode == NO_COUNTDOWN)
         {
             meshRenderer.material = targetedColor;
             _mode = RAYED;
         }
         _countDown = 0.1f;
+    }
+
+    internal void Locked()
+    {
+        meshRenderer.material = targetedColor;
+        _mode = NO_COUNTDOWN;
     }
 
     internal void Selected()
@@ -64,4 +64,4 @@ public class LockRayItem : MonoBehaviour
         }
         _countDown = 0.1f;
     }
-}
+}//class

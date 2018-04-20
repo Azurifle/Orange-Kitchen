@@ -17,7 +17,7 @@ public class Grappling : MonoBehaviour {
     
     private void Update()//Release Grab
     {
-        if (hand.IsGrabbing() )
+        if (hand.IsPointing() )
             return;
 
         isGrabBefore = false;
@@ -42,14 +42,14 @@ public class Grappling : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (hand.IsGrabbing() )
+        if (hand.IsPointing() )
             isGrabBefore = true;
     }
 
     private void OnTriggerStay(Collider collider)
     {
         if (isGrabBefore || grabedRigidbody ||
-            !hand.IsGrabbing() ||
+            !hand.IsPointing() ||
             !(collider.gameObject.layer == HandController.LAYER_ITEM) )
             return;
 
