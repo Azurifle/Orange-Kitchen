@@ -31,4 +31,9 @@ public class WhiteboardScript : MonoBehaviour {
             }
         }
     }
+
+    public void FinishOrder (int i)
+    {
+        notes[i].GetComponent<FoodCheckerScript>().isDeliver = true;
+    }
 }

@@ -18,6 +18,7 @@ public class CustomerScript : MonoBehaviour {
 
     private bool atSeat = false;
     private bool order = false;
+    private bool isleaving = false;
 
     private int target;
 
@@ -36,20 +37,58 @@ public class CustomerScript : MonoBehaviour {
         {
             if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true;
 
-            if (!atSeat)
+            if (!atSeat && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
             {
                 transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 10 * Time.deltaTime);
             }
-            else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f)
+            else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f 
+                && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
             {
                 transform.position = Vector3.MoveTowards(transform.position, spwn.Target[target].transform.position, 10 * Time.deltaTime);
             }
-            else if (!order)
+            else
             {
-                order = true;
+                if (!order)
+                {
+                    order = true;
+                    
+                    wBoard.TakeOrder();
+                }
 
-                wBoard.TakeOrder();
+                if (wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
+                {
+                    if (!isleaving)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 
+                            10 * Time.deltaTime);
+
+                        if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f)
+                        {
+                            isleaving = true;
+
+                            StartCoroutine(Leaving());
+                        }
+                    }
+                    else
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, spwn.SpwnMark.transform.position, 
+                            10 * Time.deltaTime);
+                    }
+                }
             }
         }
+    }
+
+    IEnumerator Leaving()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        spwn.Door.GetComponent<Animator>().SetBool("IsOpen", true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        spwn.Door.GetComponent<Animator>().SetBool("IsOpen", false);
+
+        Destroy(gameObject, 1);
     }
 }
