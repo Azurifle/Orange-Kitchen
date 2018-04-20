@@ -4,13 +4,13 @@
 public class LockRayItem : MonoBehaviour
 {
     public Material targetedColor, selectedColor;
+    
+    private const int NO_COUNTDOWN = 0, RAYED = 1, SELECTED = 2, MAX_COUNTDOWN = 2;
+    private int _mode = NO_COUNTDOWN;
 
     private MeshRenderer meshRenderer;
     private Material originalColor;
-    private float _countDown = 0;
-
-    private const int NO_COUNTDOWN = 0, RAYED = 1, SELECTED = 2;
-    private int _mode = NO_COUNTDOWN;
+    private int _countDown = 0;
 
     private void Start()
     {
@@ -18,25 +18,30 @@ public class LockRayItem : MonoBehaviour
         originalColor = meshRenderer.material;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch (_mode)
         {
-            case RAYED: _countDown -= Time.deltaTime;
+            case RAYED: --_countDown;
                 if (_countDown <= 0)
                 {
-                    meshRenderer.material = originalColor;
-                    _mode = NO_COUNTDOWN;
+                    ToOriginalColor();
                 }
                 break;
-            case SELECTED: _countDown -= Time.deltaTime;
+            case SELECTED: --_countDown;
                 if (_countDown <= 0)
                 {
-                    meshRenderer.material = targetedColor;
                     _mode = NO_COUNTDOWN;
+                    meshRenderer.material = targetedColor;
                 }
                 break;
         }
+    }
+
+    internal void ToOriginalColor()
+    {
+        _mode = NO_COUNTDOWN;
+        meshRenderer.material = originalColor;
     }
 
     internal void Rayed()
@@ -46,7 +51,7 @@ public class LockRayItem : MonoBehaviour
             meshRenderer.material = targetedColor;
             _mode = RAYED;
         }
-        _countDown = 0.1f;
+        _countDown = MAX_COUNTDOWN;
     }
 
     internal void Locked()
@@ -62,6 +67,6 @@ public class LockRayItem : MonoBehaviour
             meshRenderer.material = selectedColor;
             _mode = SELECTED;
         }
-        _countDown = 0.1f;
+        _countDown = MAX_COUNTDOWN;
     }
 }//class
