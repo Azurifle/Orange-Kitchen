@@ -22,6 +22,8 @@ public class SpawnScript : MonoBehaviour {
 
         for (int i = 3; i >= 0; i--)
             free[i] = true;
+
+        StartCoroutine(AutoSpawn());
 	}
 	
 	// Update is called once per frame
@@ -31,25 +33,32 @@ public class SpawnScript : MonoBehaviour {
 
     public void CreateCustomer ()
     {
+        bool chairFree = false;
+
         for (int i = 0; i < 4; i++)
         {
             if (free[i])
             {
                 chairNo = i;
                 free[i] = false;
+                chairFree = true;
                 
                 break;
             }
         }
-         Vector3 point = SpwnMark.transform.position;
 
-         point.y += 5;
+        if (chairFree)
+        {
+            Vector3 point = SpwnMark.transform.position;
 
-         GameObject newOne = Instantiate(Customer, point, Quaternion.identity);
+            point.y += 5;
 
-         newOne.GetComponent<CustomerScript>().RealOne = false;
+            GameObject newOne = Instantiate(Customer, point, Quaternion.identity);
 
-         StartCoroutine(DoorActivate());
+            newOne.GetComponent<CustomerScript>().RealOne = false;
+
+            StartCoroutine(DoorActivate());
+        }
     }
 
     IEnumerator DoorActivate()
@@ -59,5 +68,19 @@ public class SpawnScript : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
 
         doorAnim.SetBool("IsOpen", false);
+    }
+
+    IEnumerator AutoSpawn ()
+    {
+        float f;
+
+        while (true)
+        {
+            f = Random.Range(2, 11);
+
+            yield return new WaitForSeconds(f);
+
+            CreateCustomer();
+        }
     }
 }
