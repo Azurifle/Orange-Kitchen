@@ -31,32 +31,25 @@ public class SpawnScript : MonoBehaviour {
 
     public void CreateCustomer ()
     {
-        bool seatFree = false;
-
         for (int i = 0; i < 4; i++)
         {
             if (free[i])
             {
                 chairNo = i;
                 free[i] = false;
-                seatFree = true;
                 
                 break;
             }
         }
+         Vector3 point = SpwnMark.transform.position;
 
-        if (seatFree)
-        {
-            Vector3 point = SpwnMark.transform.position;
+         point.y += 5;
 
-            point.y += 5;
+         GameObject newOne = Instantiate(Customer, point, Quaternion.identity);
 
-            GameObject newOne = Instantiate(Customer, point, Quaternion.identity);
+         newOne.GetComponent<CustomerScript>().RealOne = false;
 
-            newOne.GetComponent<CustomerScript>().RealOne = false;
-
-            StartCoroutine(DoorActivate());
-        }
+         StartCoroutine(DoorActivate());
     }
 
     IEnumerator DoorActivate()

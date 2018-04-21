@@ -19,6 +19,7 @@ public class CustomerScript : MonoBehaviour {
     private bool atSeat = false;
     private bool order = false;
     private bool isleaving = false;
+    private bool ready = false;
 
     private int target;
 
@@ -35,24 +36,25 @@ public class CustomerScript : MonoBehaviour {
 	void Update () {
         if (!RealOne)
         {
-            if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true;
+            if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true; print(ready);
+            if (Vector3.Distance(transform.position, spwn.Target[target].transform.position) < 0.5f) ready = true;
 
-            if (!atSeat && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
+            if (!atSeat && !ready)
             {
                 transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 10 * Time.deltaTime);
             }
-            else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f 
-                && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
+            else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f & !ready)
             {
                 transform.position = Vector3.MoveTowards(transform.position, spwn.Target[target].transform.position, 10 * Time.deltaTime);
             }
-            else
+
+            if (ready)
             {
                 if (!order)
                 {
                     order = true;
                     
-                    wBoard.TakeOrder();
+                    wBoard.TakeOrder(target);
                 }
 
                 if (wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)

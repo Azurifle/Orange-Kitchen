@@ -16,24 +16,18 @@ public class WhiteboardScript : MonoBehaviour {
 		
 	}
 
-    public void TakeOrder ()
+    public void TakeOrder (int i)
     {
-        for (int i = 0; i < 4; i++)
-        {
-            if (notes[i].GetComponent<FoodCheckerScript>().isDeliver)
-            {
-                notes[i].GetComponent<FoodCheckerScript>().isDeliver = false;
-                notes[i].GetComponent<FoodCheckerScript>().seatNo = i + 1;
-                notes[i].GetComponent<FoodCheckerScript>().noodleReq = 2;
-                notes[i].GetComponent<FoodCheckerScript>().porkReq = 5;
-                notes[i].GetComponent<FoodCheckerScript>().soupReq = 1;
-                break;
-            }
-        }
+        notes[i].GetComponent<FoodCheckerScript>().isDeliver = false;
+        notes[i].GetComponent<FoodCheckerScript>().seatNo = i + 1;
+        notes[i].GetComponent<FoodCheckerScript>().noodleReq = 2;
+        notes[i].GetComponent<FoodCheckerScript>().porkReq = 5;
+        notes[i].GetComponent<FoodCheckerScript>().soupReq = 1;
     }
 
     public void FinishOrder (int i)
     {
         notes[i].GetComponent<FoodCheckerScript>().isDeliver = true;
+        SpawnScript.free[i] = true;
     }
 }
