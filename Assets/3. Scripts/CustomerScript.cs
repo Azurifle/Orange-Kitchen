@@ -36,7 +36,7 @@ public class CustomerScript : MonoBehaviour {
 	void Update () {
         if (!RealOne)
         {
-            if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true; print(ready);
+            if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true;
             if (Vector3.Distance(transform.position, spwn.Target[target].transform.position) < 0.5f) ready = true;
 
             if (!atSeat && !ready)

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23191191554554940}
   - component: {fileID: 114116441760811408}
   m_Layer: 8
-  m_Name: LockRay Item
+  m_Name: Lockray Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
