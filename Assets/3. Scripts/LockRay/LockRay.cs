@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-
 public class LockRay : MonoBehaviour
 {
     public ChefHand realHand;
@@ -104,5 +103,4 @@ public class LockRay : MonoBehaviour
                 break;
         }
     }
-    
 }//class
