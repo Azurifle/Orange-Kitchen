@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 122425235958365616}
   m_Layer: 8
   m_Name: RedPork - Middle
-  m_TagString: Untagged
+  m_TagString: RedPork
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

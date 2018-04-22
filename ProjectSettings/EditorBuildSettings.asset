@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/2. Scenes/Mock_Up.unity
     guid: 019a34cae0eba7e47b0a376466899d25
-  - enabled: 1
+  - enabled: 0
     path: Assets/2. Scenes/Mock_Up 1.unity
     guid: 8cb083e855411764a9460f83edc148b7
+  - enabled: 0
+    path: Assets/2. Scenes/Locked Ray.unity
+    guid: 14591c784f146c14980436679c813fce
+  - enabled: 1
+    path: Assets/2. Scenes/1st_Playable.unity
+    guid: ab9569e247df7a140b2aa34223f758a2
