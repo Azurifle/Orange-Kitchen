@@ -2664,10 +2664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a649d38cdc8e0de4b9367d5ec81f9e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbedPosition: {x: 0, y: 0, z: 0}
-  grabbedRotation: {x: 0, y: 0, z: 0}
-  isSpawner: 0
-  prefab: {fileID: 0}
 --- !u!54 &415745299
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4024,10 +4020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a649d38cdc8e0de4b9367d5ec81f9e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbedPosition: {x: 0, y: 0, z: 0}
-  grabbedRotation: {x: 0, y: 0, z: 0}
-  isSpawner: 0
-  prefab: {fileID: 0}
 --- !u!1 &862463726
 GameObject:
   m_ObjectHideFlags: 0
@@ -8085,7 +8077,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -456371099
+  randomSeed: -996602011
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11394,7 +11386,7 @@ Transform:
   m_GameObject: {fileID: 1659114083}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -28.999332, y: 154, z: 1.0002403}
-  m_LocalScale: {x: 100.00004, y: 100.00016, z: 100.00011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1163282399}
   m_RootOrder: 1
