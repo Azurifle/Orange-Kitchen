@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HeaterScript : MonoBehaviour {
 
     public GameObject fire;
+    public ChefHand leftHand;
+    public ChefHand rightHand;
 
     private Color alpha;
     private bool isHeat = false;
@@ -42,8 +42,10 @@ public class HeaterScript : MonoBehaviour {
         isOn = !isOn;
     }
 
-    private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider other)
     {
-        isOn = !isOn;
+        if (other.gameObject.layer == HandController.LAYER_HAND
+            && (leftHand.IsPointing() || rightHand.IsPointing()))
+            isOn = !isOn;
     }
 }

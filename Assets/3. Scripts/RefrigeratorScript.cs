@@ -5,6 +5,8 @@ using UnityEngine;
 public class RefrigeratorScript : MonoBehaviour {
 
     public Animator anim;
+    public ChefHand leftHand;
+    public ChefHand rightHand;
 
     private bool onSwitch = false;
     
@@ -30,7 +32,8 @@ public class RefrigeratorScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == HandController.LAYER_HAND)
+        if (other.gameObject.layer == HandController.LAYER_HAND 
+            && (leftHand.IsPointing() || rightHand.IsPointing() ))
             anim.SetBool("On", !anim.GetBool("On"));
     }
 }

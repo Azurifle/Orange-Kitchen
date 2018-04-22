@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 65474567708744182}
   m_Layer: 0
   m_Name: Outer Collider (5)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 65988679651650352}
   m_Layer: 0
   m_Name: Outer Collider (18)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 65059062004425052}
   m_Layer: 0
   m_Name: Outer Collider (14)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 65459908897602506}
   m_Layer: 0
   m_Name: Outer Collider (7)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 65367182603028506}
   m_Layer: 0
   m_Name: Outer Collider
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 65268913153664970}
   m_Layer: 0
   m_Name: Outer Collider (6)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 65134197431177864}
   m_Layer: 0
   m_Name: Outer Collider (10)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 65993126605841086}
   m_Layer: 0
   m_Name: Outer Collider (8)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 114196761177935376}
   m_Layer: 0
   m_Name: Inner Collider
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 65846045447054900}
   m_Layer: 0
   m_Name: Outer Collider (15)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 65876485707419458}
   m_Layer: 0
   m_Name: Outer Collider (4)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 65690067298653148}
   m_Layer: 0
   m_Name: Outer Collider (1)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,9 +217,11 @@ GameObject:
   - component: {fileID: 95280562854150218}
   - component: {fileID: 54891671292498532}
   - component: {fileID: 65933689148341656}
-  m_Layer: 0
+  - component: {fileID: 122627011045909908}
+  - component: {fileID: 114704813176359554}
+  m_Layer: 8
   m_Name: Bowl
-  m_TagString: Grabbable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -235,7 +237,7 @@ GameObject:
   - component: {fileID: 65305333506097822}
   m_Layer: 0
   m_Name: Outer Collider (11)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +253,7 @@ GameObject:
   - component: {fileID: 65803042072471876}
   m_Layer: 0
   m_Name: Outer Collider (9)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,7 +269,7 @@ GameObject:
   - component: {fileID: 65069799845509556}
   m_Layer: 0
   m_Name: Outer Collider (13)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +285,7 @@ GameObject:
   - component: {fileID: 65248785622432014}
   m_Layer: 0
   m_Name: Outer Collider (16)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -299,7 +301,7 @@ GameObject:
   - component: {fileID: 65320924006871160}
   m_Layer: 0
   m_Name: Outer Collider (12)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,7 +317,7 @@ GameObject:
   - component: {fileID: 65362861182289664}
   m_Layer: 0
   m_Name: Outer Collider (2)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,7 +333,7 @@ GameObject:
   - component: {fileID: 65387196449196220}
   m_Layer: 0
   m_Name: Outer Collider (3)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +349,7 @@ GameObject:
   - component: {fileID: 65464413718978514}
   m_Layer: 0
   m_Name: Outer Collider (17)
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,8 +594,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517566357219002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 100, y: 6.28, z: 254.44}
   m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
   m_Children:
   - {fileID: 4263324843405384}
@@ -984,3 +986,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc149132c10b9842b0c3c47bbe4e133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114704813176359554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517566357219002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a649d38cdc8e0de4b9367d5ec81f9e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbedPosition: {x: 0, y: 0, z: 0}
+  grabbedRotation: {x: 0, y: 0, z: 0}
+--- !u!122 &122627011045909908
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1517566357219002}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294918400
+  m_Size: 1.5

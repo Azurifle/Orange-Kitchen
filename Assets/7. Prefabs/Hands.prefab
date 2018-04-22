@@ -801,9 +801,9 @@ GameObject:
   - component: {fileID: 54162266323910566}
   - component: {fileID: 114229209789617584}
   - component: {fileID: 65134569151541122}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RealHand - Right
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -834,9 +834,9 @@ GameObject:
   - component: {fileID: 54649594853176710}
   - component: {fileID: 114322010454376898}
   - component: {fileID: 65887792213921364}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RealHand - Left
-  m_TagString: Hand
+  m_TagString: Untagged
   m_Icon: {fileID: 7240890024493199768, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

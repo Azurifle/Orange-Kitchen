@@ -11,9 +11,9 @@ public class PorkPiece : MonoBehaviour {//not working yet
         if (isFree)
             return;
         
-        Knife knife = collision.collider.GetComponent<Knife>();
+        /*Knife knife = collision.collider.GetComponent<Knife>();
         if (knife == null)
-            return;
+            return;*/
 
         //gameObject.tag = HandController.TAG_GRABBABLE;
         transform.parent = null;

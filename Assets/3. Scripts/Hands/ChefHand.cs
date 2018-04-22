@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ChefHand : HandController
 {
-    public Animator                 m_animator;
+    public Animator m_animator;
 
 	private float m_fLastTriggerVal;
     private enum HandAnimation { Idle, Fist, Point, GripBall, HoldBook };
@@ -18,6 +18,13 @@ public class ChefHand : HandController
         if(_controller == null)
             return false;
         return _controller.GetButton(SixenseButtons.TRIGGER);
+    }
+
+    public bool IsGrabbing()
+    {
+        if (_controller == null)
+            return false;
+        return _controller.GetButton(SixenseButtons.BUMPER);
     }
 
     public float GetJoyStickX()
@@ -48,19 +55,23 @@ public class ChefHand : HandController
 
     private void UpdateHandAnimation()
 	{
-        if (_controller.GetButton(SixenseButtons.TRIGGER) )// Fist or Point
+        if (_controller.GetButton(SixenseButtons.BUMPER))
         {
-            if (_controller.GetButton(SixenseButtons.BUMPER) )
-            {
-                SetAnimation(HandAnimation.Fist);
+            SetAnimation(HandAnimation.Fist);
 
+            if (_controller.GetButton(SixenseButtons.TRIGGER))
+            {
                 float fTriggerVal = Mathf.Lerp(m_fLastTriggerVal, _controller.Trigger, 0.1f);
                 m_animator.SetFloat("FistAmount", fTriggerVal);
                 m_fLastTriggerVal = fTriggerVal;
-
                 return;
-            }// Fist
+            }
 
+            m_animator.SetFloat("FistAmount", 1f);
+            return;
+        }// Fist
+        else if (_controller.GetButton(SixenseButtons.TRIGGER) )
+        {
             SetAnimation(HandAnimation.Point);
             return;
         }
