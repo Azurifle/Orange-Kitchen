@@ -595,7 +595,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1517566357219002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 100, y: 6.28, z: 254.44}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.65, y: 1.65, z: 1.65}
   m_Children:
   - {fileID: 4263324843405384}
@@ -999,6 +999,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabbedPosition: {x: 0, y: 0, z: 0}
   grabbedRotation: {x: 0, y: 0, z: 0}
+  isSpawner: 1
+  prefab: {fileID: 4840485599448082}
 --- !u!122 &122627011045909908
 Halo:
   m_ObjectHideFlags: 1

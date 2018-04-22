@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(Behaviour) )]
+[RequireComponent(typeof(Rigidbody))]
 public class Item : MonoBehaviour
 {
     public Vector3 grabbedPosition = Vector3.zero;
     public Vector3 grabbedRotation = Vector3.zero;
+    public bool isSpawner = false;
+    public Transform prefab;
     
     private int _countDown = 0;
     private bool _isHightlight = false;
@@ -42,10 +44,19 @@ public class Item : MonoBehaviour
 
     internal void Grabbed(Transform grabCenterPoint)
     {
+        Vector3 oldPosition = transform.position;
+        Quaternion oldRotation = transform.rotation;
+
         rigidbody.isKinematic = true;
         transform.SetParent(grabCenterPoint);
         transform.localPosition = grabbedPosition;
         transform.localEulerAngles = grabbedRotation;
+
+        if (isSpawner)
+        {
+            isSpawner = false;
+            Instantiate(prefab, oldPosition, oldRotation);
+        }
     }
 
     internal void Throwed(Vector3 vector3)

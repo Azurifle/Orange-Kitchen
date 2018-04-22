@@ -160,6 +160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabbedPosition: {x: 0, y: 0, z: 0}
   grabbedRotation: {x: 0, y: 0, z: 0}
+  isSpawner: 1
+  prefab: {fileID: 4596780988634846}
 --- !u!122 &122249198476867698
 Halo:
   m_ObjectHideFlags: 1

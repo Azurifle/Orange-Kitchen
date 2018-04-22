@@ -1,14 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BowlFinishing : MonoBehaviour {
 
-    int noodleCount = 0;
-    
+    private int _noodleCount = 0;
+
+    public int NoodleCount
+    {
+        get
+        {
+            return _noodleCount;
+        }
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
-        if (noodleCount >= 6)
+        if (NoodleCount >= 6)
             return;
 
         Rigidbody item = collider.GetComponent<Rigidbody>();
@@ -19,12 +25,12 @@ public class BowlFinishing : MonoBehaviour {
         if (noodle == null || !noodle.IsCooked())
             return;
 
-        ++noodleCount;
+        ++_noodleCount;
         item.isKinematic = true;
         collider.enabled = false;
         item.transform.parent = transform;
 
-        switch (noodleCount)
+        switch (NoodleCount)
         {
             case 1:
                 item.transform.localEulerAngles = new Vector3(0, -180, 90);
