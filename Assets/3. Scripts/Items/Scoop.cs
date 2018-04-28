@@ -4,9 +4,9 @@ public class Scoop : Item
 {
     public GameObject soup;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.layer == 4 && tag == null)//water
+        if (collision.gameObject.layer == 4 && CompareTag("Untagged"))//water
         {
             tag = "Soup";
             soup.SetActive(true);
@@ -15,7 +15,7 @@ public class Scoop : Item
 
     internal void Pour()
     {
-        tag = null;
+        tag = "Untagged";
         soup.SetActive(false);
     }
 }

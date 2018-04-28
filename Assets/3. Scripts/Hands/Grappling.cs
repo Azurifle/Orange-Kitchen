@@ -62,6 +62,12 @@ public class Grappling : MonoBehaviour {
         float minDistance = Mathf.Infinity;
         foreach (Item item in _inRangeItems)
         {
+            if (!item || item.gameObject.layer != HandController.LAYER_ITEM)
+            {
+                _inRangeItems.Remove(item);
+                return null;
+            }
+                
             float distance = Vector3.Distance(item.transform.position, transform.position);
             if (distance < minDistance)
             {
