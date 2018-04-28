@@ -53,7 +53,7 @@ public class BowlFinishing : MonoBehaviour {
                 return;
 
             ++_noodleCount;
-            other.tag = null;
+            other.tag = "Untagged";
             other.gameObject.layer = 0;
             item.isKinematic = true;
             other.enabled = false;
@@ -94,7 +94,7 @@ public class BowlFinishing : MonoBehaviour {
                 return;
 
             ++_redPorkCount;
-            other.tag = null;
+            other.tag = "Untagged";
             other.gameObject.layer = 0;
             item.isKinematic = true;
             other.enabled = false;
@@ -131,7 +131,7 @@ public class BowlFinishing : MonoBehaviour {
                 return;
 
             _hasOrangeFishBall = true;
-            other.tag = null;
+            other.tag = "Untagged";
             other.gameObject.layer = 0;
             item.isKinematic = true;
             other.enabled = false;

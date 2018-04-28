@@ -17,11 +17,12 @@ public class CustomerTable : MonoBehaviour {
             && foodChecker.porkReq == bowl.RedPorkCount && foodChecker.noodleReq == bowl.NoodleCount)
         {
             whiteboard.FinishOrder(foodChecker.seatNo - 1);
-            Destroy(bowl.transform.parent.gameObject);
+            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(transform.position - player.position) * 1);
+            Destroy(bowl.transform.parent.gameObject, 1f);
         }   
         else
         {
-            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(player.position - transform.position) * 100);
+            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(player.position - transform.position) * 1);
             Destroy(bowl.transform.parent.gameObject, 1f);
         }
     }
