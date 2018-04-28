@@ -26,6 +26,7 @@ public class CustomerScript : MonoBehaviour {
     private bool ready = false;
     private bool timeCount = false;
     private bool timeOut = false;
+    private bool waitToLeave = false;
 
     private int target;
 
@@ -82,10 +83,15 @@ public class CustomerScript : MonoBehaviour {
                 {
                     if (!isleaving)
                     {
-                        transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 
-                            10 * Time.deltaTime);
-                        transform.LookAt(SeatMark[target].transform.position);
-                        customerAnim.SetBool("IsWalk", true);
+                        if (!waitToLeave)
+                            StartCoroutine(WaitToLeave());
+                        else
+                        {
+                            transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position,
+                                10 * Time.deltaTime);
+                            transform.LookAt(SeatMark[target].transform.position);
+                            customerAnim.SetBool("IsWalk", true);
+                        }
 
                         if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f)
                         {
@@ -112,6 +118,13 @@ public class CustomerScript : MonoBehaviour {
                 }
             }
         }
+    }
+
+    IEnumerator WaitToLeave ()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        waitToLeave = true;
     }
 
     IEnumerator Leaving()
