@@ -5,9 +5,11 @@ public class Item : MonoBehaviour
 {
     public Vector3 grabbedPosition = Vector3.zero;
     public Vector3 grabbedRotation = Vector3.zero;
-    public bool isSpawner = false;
+    public bool isSpawner = true;
     public Transform prefab;
-    
+    public Vector3 spawnPoint;
+    public Vector3 spawnRotation;
+
     private int _countDown = 0;
     private bool _isHightlight = false;
     private new Rigidbody rigidbody;
@@ -44,9 +46,6 @@ public class Item : MonoBehaviour
 
     internal void Grabbed(Transform grabCenterPoint)
     {
-        Vector3 oldPosition = transform.position;
-        Quaternion oldRotation = transform.rotation;
-
         rigidbody.isKinematic = true;
         transform.SetParent(grabCenterPoint);
         transform.localPosition = grabbedPosition;
@@ -55,7 +54,11 @@ public class Item : MonoBehaviour
         if (isSpawner)
         {
             isSpawner = false;
-            Instantiate(prefab, oldPosition, oldRotation);
+            Item newItem = Instantiate(prefab, spawnPoint, Quaternion.Euler(spawnRotation)).GetComponent<Item>();
+            newItem.prefab = prefab;
+            newItem.spawnPoint = spawnPoint;
+            newItem.spawnRotation = spawnRotation;
+            newItem.isSpawner = true;
         }
     }
 
