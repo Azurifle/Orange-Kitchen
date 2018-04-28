@@ -7,11 +7,13 @@ public class CustomerScript : MonoBehaviour {
     public GameObject Door;
     public GameObject SpwnMark;
     public GameObject WhiteBoard;
+    public GameObject[] Table;
     public GameObject[] SeatMark;
 
     public bool RealOne;
 
     private Animator doorAnim;
+    private Animator customerAnim;
 
     private SpawnScript spwn;
     private WhiteboardScript wBoard;
@@ -32,6 +34,7 @@ public class CustomerScript : MonoBehaviour {
         doorAnim = Door.GetComponent<Animator>();
         spwn = SpwnMark.GetComponent<SpawnScript>();
         wBoard = WhiteBoard.GetComponent<WhiteboardScript>();
+        customerAnim = this.GetComponent<Animator>();
 
         target = SpawnScript.chairNo;
     }
@@ -48,10 +51,16 @@ public class CustomerScript : MonoBehaviour {
             if (!atSeat && !ready)
             {
                 transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 10 * Time.deltaTime);
+                transform.LookAt(SeatMark[target].transform.position);
+                transform.Rotate(0, transform.rotation.y, 0);
+                customerAnim.SetBool("IsWalk", true);
             }
             else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f & !ready)
             {
                 transform.position = Vector3.MoveTowards(transform.position, spwn.Target[target].transform.position, 10 * Time.deltaTime);
+                transform.LookAt(Table[target].transform.position);
+                transform.Rotate(0, transform.rotation.y, 0);
+                customerAnim.SetBool("IsWalk", true);
             }
 
             if (ready)
@@ -60,7 +69,8 @@ public class CustomerScript : MonoBehaviour {
                 {
                     order = true;
                     timeCount = true;
-                    
+                    customerAnim.SetBool("IsWalk", false);
+
                     wBoard.TakeOrder(target);
                 }
 
@@ -70,6 +80,8 @@ public class CustomerScript : MonoBehaviour {
                     {
                         transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 
                             10 * Time.deltaTime);
+                        transform.LookAt(SeatMark[target].transform.position);
+                        customerAnim.SetBool("IsWalk", true);
 
                         if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f)
                         {
@@ -82,6 +94,8 @@ public class CustomerScript : MonoBehaviour {
                     {
                         transform.position = Vector3.MoveTowards(transform.position, spwn.SpwnMark.transform.position, 
                             10 * Time.deltaTime);
+                        transform.LookAt(spwn.SpwnMark.transform.position);
+                        customerAnim.SetBool("IsWalk", true);
                     }
                 }
             }
