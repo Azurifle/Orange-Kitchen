@@ -4226,9 +4226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabbedPosition: {x: 0, y: 0, z: 0}
-  grabbedRotation: {x: 0, y: 0, z: 0}
-  isSpawner: 0
-  prefab: {fileID: 0}
 --- !u!1 &862463726
 GameObject:
   m_ObjectHideFlags: 0

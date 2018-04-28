@@ -20,8 +20,12 @@ public class CustomerScript : MonoBehaviour {
     private bool order = false;
     private bool isleaving = false;
     private bool ready = false;
+    private bool timeCount = false;
+    private bool timeOut = false;
 
     private int target;
+
+    private float timeLeft = 60.0f;
 
     // Use this for initialization
     void Start () {
@@ -38,6 +42,8 @@ public class CustomerScript : MonoBehaviour {
         {
             if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true;
             if (Vector3.Distance(transform.position, spwn.Target[target].transform.position) < 0.5f) ready = true;
+            if (timeCount) timeLeft -= Time.deltaTime;
+            if (timeLeft < 0 && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver) timeOut = true;
 
             if (!atSeat && !ready)
             {
@@ -53,11 +59,12 @@ public class CustomerScript : MonoBehaviour {
                 if (!order)
                 {
                     order = true;
+                    timeCount = true;
                     
                     wBoard.TakeOrder(target);
                 }
 
-                if (wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
+                if (wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver || timeOut)
                 {
                     if (!isleaving)
                     {
@@ -83,7 +90,7 @@ public class CustomerScript : MonoBehaviour {
 
     IEnumerator Leaving()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.0f);
 
         spwn.Door.GetComponent<Animator>().SetBool("IsOpen", true);
 
