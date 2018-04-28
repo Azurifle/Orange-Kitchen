@@ -55,11 +55,16 @@ public class Item : MonoBehaviour
         {
             isSpawner = false;
             Item newItem = Instantiate(prefab, spawnPoint, Quaternion.Euler(spawnRotation)).GetComponent<Item>();
-            newItem.prefab = prefab;
-            newItem.spawnPoint = spawnPoint;
-            newItem.spawnRotation = spawnRotation;
-            newItem.isSpawner = true;
+            newItem.SetSpawnerOption(prefab, spawnPoint, spawnRotation);
         }
+    }
+
+    internal void SetSpawnerOption(Transform prefab, Vector3 point, Vector3 rotation)
+    {
+        this.prefab = prefab;
+        spawnPoint = point;
+        spawnRotation = rotation;
+        isSpawner = true;
     }
 
     internal void Throwed(Vector3 vector3)
