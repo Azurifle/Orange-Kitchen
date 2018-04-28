@@ -18,6 +18,8 @@ public class CustomerScript : MonoBehaviour {
     private SpawnScript spwn;
     private WhiteboardScript wBoard;
 
+    private Vector3 targetPos;
+
     private bool atSeat = false;
     private bool order = false;
     private bool isleaving = false;
@@ -27,7 +29,7 @@ public class CustomerScript : MonoBehaviour {
 
     private int target;
 
-    private float timeLeft = 60.0f;
+    private float timeLeft = 120.0f;
 
     // Use this for initialization
     void Start () {
@@ -44,21 +46,23 @@ public class CustomerScript : MonoBehaviour {
         if (!RealOne)
         {
             if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true;
-            if (Vector3.Distance(transform.position, spwn.Target[target].transform.position) < 0.5f) ready = true;
+            if (Vector3.Distance(transform.position, spwn.Target[target].transform.position) <= 4.0f) ready = true;
             if (timeCount) timeLeft -= Time.deltaTime;
             if (timeLeft < 0 && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver) timeOut = true;
 
             if (!atSeat && !ready)
             {
-                transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position, 10 * Time.deltaTime);
+                targetPos = new Vector3(SeatMark[target].transform.position.x, 0, SeatMark[target].transform.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, 10 * Time.deltaTime);
                 transform.LookAt(SeatMark[target].transform.position);
                 transform.Rotate(0, transform.rotation.y, 0);
                 customerAnim.SetBool("IsWalk", true);
             }
             else if (atSeat && Vector3.Distance(transform.position, spwn.Target[target].transform.position) >= 0.5f & !ready)
             {
-                transform.position = Vector3.MoveTowards(transform.position, spwn.Target[target].transform.position, 10 * Time.deltaTime);
-                transform.LookAt(Table[target].transform.position);
+                targetPos = new Vector3(spwn.Target[target].transform.position.x, 0, spwn.Target[target].transform.position.z);
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, 10 * Time.deltaTime);
+                transform.LookAt(new Vector3(Table[target].transform.position.x , 0, Table[target].transform.position.z));
                 transform.Rotate(0, transform.rotation.y, 0);
                 customerAnim.SetBool("IsWalk", true);
             }
@@ -97,6 +101,14 @@ public class CustomerScript : MonoBehaviour {
                         transform.LookAt(spwn.SpwnMark.transform.position);
                         customerAnim.SetBool("IsWalk", true);
                     }
+                }
+                else
+                {
+                    targetPos = new Vector3(spwn.Target[target].transform.position.x, 0, spwn.Target[target].transform.position.z);
+                    transform.position = targetPos;
+                    transform.LookAt(new Vector3(Table[target].transform.position.x, 0, Table[target].transform.position.z));
+                    transform.Rotate(0, transform.rotation.y, 0);
+                    customerAnim.SetBool("IsWalk", false);
                 }
             }
         }

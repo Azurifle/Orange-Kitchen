@@ -51,7 +51,7 @@ public class SpawnScript : MonoBehaviour {
         {
             Vector3 point = SpwnMark.transform.position;
 
-            point.y += 5;
+            //point.y += 5;
 
             GameObject newOne = Instantiate(Customer, point, Quaternion.identity);
 
