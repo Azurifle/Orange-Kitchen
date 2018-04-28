@@ -53,6 +53,8 @@ public class BowlFinishing : MonoBehaviour {
                 return;
 
             ++_noodleCount;
+            other.tag = null;
+            other.gameObject.layer = 0;
             item.isKinematic = true;
             other.enabled = false;
             item.transform.parent = transform;
@@ -92,6 +94,8 @@ public class BowlFinishing : MonoBehaviour {
                 return;
 
             ++_redPorkCount;
+            other.tag = null;
+            other.gameObject.layer = 0;
             item.isKinematic = true;
             other.enabled = false;
             item.transform.parent = transform;
@@ -127,11 +131,13 @@ public class BowlFinishing : MonoBehaviour {
                 return;
 
             _hasOrangeFishBall = true;
+            other.tag = null;
+            other.gameObject.layer = 0;
             item.isKinematic = true;
             other.enabled = false;
             item.transform.parent = transform;
             item.transform.localEulerAngles = new Vector3(90, 0, 0);
-            item.transform.localPosition = new Vector3(-0.08f, 0.68f, 0.35f);
+            item.transform.localPosition = new Vector3(0f, 0.68f, 0f);
         }
         else if (other.CompareTag("Soup") && !_hasSoup)
         {
