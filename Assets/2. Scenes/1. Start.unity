@@ -2315,6 +2315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartText: {fileID: 262309172}
+  left: {fileID: 1329035854}
+  right: {fileID: 12116772}
 --- !u!4 &389219497 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4647255833068818, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
@@ -5900,6 +5902,10 @@ Prefab:
     - target: {fileID: 436198, guid: 0b82dd794175b304a87805e4b38fbe84, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11436198, guid: 0b82dd794175b304a87805e4b38fbe84, type: 2}
+      propertyPath: AppID
+      value: com.Kid-Mai-Ork.OrangeKitchen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b82dd794175b304a87805e4b38fbe84, type: 2}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
@@ -8,7 +9,7 @@ public class MenuScript : MonoBehaviour {
     public Text StartText;
     public ChefHand left;
     public ChefHand right;
-
+    
     // Use this for initialization
     void Start () {
         StartCoroutine(Blink());
@@ -36,6 +37,6 @@ public class MenuScript : MonoBehaviour {
 
     public void StartGame()
     {
-        Application.LoadLevel(1);
+        SceneManager.LoadScene("2. 1st_Playable");
     }
 }
