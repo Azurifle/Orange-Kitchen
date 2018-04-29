@@ -20,14 +20,13 @@ public class CustomerTable : MonoBehaviour {
         {
             winParticle.Play();
             whiteboard.FinishOrder(foodChecker.seatNo - 1);
-            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(transform.position - player.position) * 1);
+            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.up * 10000);
             Destroy(bowl.transform.parent.gameObject, 1f);
             StartCoroutine(Wait());
         }   
         else
         {
-            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(player.position - transform.position) * 1);
-            Destroy(bowl.transform.parent.gameObject, 1f);
+            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(player.position - transform.position) * 10000);
         }
     }
 

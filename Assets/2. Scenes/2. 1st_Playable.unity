@@ -27657,32 +27657,32 @@ Prefab:
     - target: {fileID: 114322010454376898, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
       propertyPath: Sensitivity.x
-      value: 0.0035
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 114322010454376898, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
       propertyPath: Sensitivity.y
-      value: 0.0035
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 114322010454376898, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
       propertyPath: Sensitivity.z
-      value: 0.0035
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 114229209789617584, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
       propertyPath: Sensitivity.x
-      value: 0.0035
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 114229209789617584, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
       propertyPath: Sensitivity.y
-      value: 0.0035
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 114229209789617584, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
       propertyPath: Sensitivity.z
-      value: 0.0035
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 65856445163151470, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
         type: 2}
