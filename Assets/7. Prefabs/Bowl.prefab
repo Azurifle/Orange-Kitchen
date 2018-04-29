@@ -1070,11 +1070,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aeefdd9dd5f90d4d86ceaa8b45bdf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbedPosition: {x: 0, y: 0, z: 0}
-  grabbedRotation: {x: 0, y: 0, z: 0}
+  grabbedPosition: {x: 0.35, y: -0.4, z: 0.3}
+  grabbedRotation: {x: 0, y: 0, z: 90}
   isSpawner: 1
   prefab: {fileID: 4840485599448082}
-  spawnPoint: {x: 0, y: 0, z: 0}
+  spawnPoint: {x: 99.77, y: 5.376, z: 261.74}
   spawnRotation: {x: 0, y: 0, z: 0}
 --- !u!122 &122627011045909908
 Halo:

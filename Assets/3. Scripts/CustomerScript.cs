@@ -12,6 +12,8 @@ public class CustomerScript : MonoBehaviour {
 
     public bool RealOne;
 
+    public ParticleSystem angryParticle;
+
     private Animator doorAnim;
     private Animator customerAnim;
 
@@ -30,7 +32,7 @@ public class CustomerScript : MonoBehaviour {
 
     private int target;
 
-    private float timeLeft = 120.0f;
+    private float timeLeft = 60.0f;
 
     // Use this for initialization
     void Start () {
@@ -78,6 +80,10 @@ public class CustomerScript : MonoBehaviour {
 
                     wBoard.TakeOrder(target);
                 }
+
+                if (angryParticle.isStopped && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver
+                    && timeOut)
+                    angryParticle.Play();
 
                 if (wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver || timeOut)
                 {

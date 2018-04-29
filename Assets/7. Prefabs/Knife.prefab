@@ -148,12 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aeefdd9dd5f90d4d86ceaa8b45bdf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbedPosition: {x: 0, y: 0, z: 0}
-  grabbedRotation: {x: 0, y: 0, z: 0}
+  grabbedPosition: {x: -0.282, y: -0.009, z: 0.269}
+  grabbedRotation: {x: 0, y: -60.331, z: 90.00001}
   isSpawner: 1
-  prefab: {fileID: 4031105696968058}
-  spawnPoint: {x: 0, y: 0, z: 0}
-  spawnRotation: {x: 0, y: 0, z: 0}
+  prefab: {fileID: 0}
+  spawnPoint: {x: 99.305, y: 5.447, z: 249.595}
+  spawnRotation: {x: 0, y: 90, z: -90}
 --- !u!122 &122034582028374022
 Halo:
   m_ObjectHideFlags: 1

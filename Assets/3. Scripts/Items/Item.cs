@@ -69,6 +69,8 @@ public class Item : MonoBehaviour
 
     internal void Throwed(Vector3 vector3)
     {
+        if (transform == null)
+            return;
         transform.SetParent(null);
         rigidbody.isKinematic = false;
         rigidbody.AddForce(vector3);
