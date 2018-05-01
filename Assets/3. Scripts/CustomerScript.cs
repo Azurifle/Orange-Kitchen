@@ -11,6 +11,7 @@ public class CustomerScript : MonoBehaviour {
     public GameObject[] SeatMark;
 
     public bool RealOne;
+    public bool Boss;
 
     public ParticleSystem angryParticle;
 
@@ -78,7 +79,7 @@ public class CustomerScript : MonoBehaviour {
                     timeCount = true;
                     customerAnim.SetBool("IsWalk", false);
 
-                    wBoard.TakeOrder(target);
+                    wBoard.TakeOrder(target, Boss);
                 }
 
                 if (angryParticle.isStopped && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver
@@ -128,7 +129,12 @@ public class CustomerScript : MonoBehaviour {
 
     IEnumerator WaitToLeave ()
     {
-        yield return new WaitForSeconds(2.0f);
+        float t;
+
+        if (Boss) t = 1.0f;
+        else t = 2.0f;
+
+        yield return new WaitForSeconds(t);
 
         waitToLeave = true;
     }
