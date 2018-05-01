@@ -149,6 +149,8 @@ public class CustomerScript : MonoBehaviour {
 
         spwn.Door.GetComponent<Animator>().SetBool("IsOpen", false);
 
+        if (Boss) SpawnScript.SpawnCnt = 0;
+
         Destroy(gameObject, 1);
     }
 }
