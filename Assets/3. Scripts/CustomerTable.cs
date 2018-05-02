@@ -26,7 +26,8 @@ public class CustomerTable : MonoBehaviour {
         }   
         else
         {
-            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(player.position - transform.position) * 10000);
+            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(
+                Vector3.Normalize(player.position - transform.position)+Vector3.up) * 4000);
         }
     }
 

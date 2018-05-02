@@ -1,9 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnScript : MonoBehaviour {
-
     public static int chairNo = -1;
     public static int SpawnCnt = 0;
 
@@ -16,6 +14,8 @@ public class SpawnScript : MonoBehaviour {
 
     public Transform[] Target;
 
+    private const int BOSS_TIME = 8;//20
+
     private Animator doorAnim;
 
 	// Use this for initialization
@@ -27,11 +27,6 @@ public class SpawnScript : MonoBehaviour {
 
         StartCoroutine(AutoSpawn());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void CreateCustomer ()
     {
@@ -40,7 +35,7 @@ public class SpawnScript : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            if (free[i] && SpawnCnt < 20)
+            if (free[i] && SpawnCnt < BOSS_TIME)
             {
                 chairNo = i;
                 free[i] = false;
@@ -49,12 +44,12 @@ public class SpawnScript : MonoBehaviour {
 
                 break;
             }
-            else if (free[i] && SpawnCnt == 20)
+            else if (free[i] && SpawnCnt == BOSS_TIME)
             {
                 chairNo = i;
                 free[i] = false;
                 bossFree = true;
-                SpawnCnt++;
+                SpawnCnt = 0;//++
 
                 break;
             }
@@ -72,7 +67,7 @@ public class SpawnScript : MonoBehaviour {
         else if (bossFree)
         {
             Vector3 point = SpwnMark.transform.position;
-            GameObject newOne = Instantiate(Customer, point, Quaternion.identity);
+            GameObject newOne = Instantiate(Boss, point, Quaternion.identity);//Customer
 
             newOne.GetComponent<CustomerScript>().RealOne = false;
 

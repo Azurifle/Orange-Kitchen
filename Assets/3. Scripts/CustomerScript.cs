@@ -33,7 +33,7 @@ public class CustomerScript : MonoBehaviour {
 
     private int target;
 
-    private float timeLeft = 60.0f;
+    private float timeLeft = 150.0f;
 
     // Use this for initialization
     void Start () {
