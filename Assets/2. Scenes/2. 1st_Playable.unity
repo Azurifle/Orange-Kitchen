@@ -120,11 +120,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1875437633}
   m_Script: {fileID: 11500000, guid: d3b5af70b4cf0bf4ca16c8e25df430c1, type: 3}
---- !u!4 &20282299 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4026532412662110, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
-    type: 2}
-  m_PrefabInternal: {fileID: 1875437633}
 --- !u!1 &22036697
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +209,11 @@ MeshFilter:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5fa298a7a640a1846b3e21d413260baf, type: 3}
   m_PrefabInternal: {fileID: 275007207}
+--- !u!1 &28409060 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1007753008422524, guid: 640d5ea7a91eef54399b9367ed61e9ea,
+    type: 2}
+  m_PrefabInternal: {fileID: 972776606}
 --- !u!1 &31440258
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +532,6 @@ GameObject:
   m_Component:
   - component: {fileID: 98672214}
   - component: {fileID: 98672217}
-  - component: {fileID: 98672216}
   - component: {fileID: 98672215}
   m_Layer: 0
   m_Name: Plane (1)
@@ -588,20 +587,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &98672216
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98672213}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &98672217
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1132,7 +1117,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 381125350
+  randomSeed: 696155360
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4974,8 +4959,8 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: efaf5240132e6b0498682cfc8a24030c, type: 3}
   m_PrefabInternal: {fileID: 226797624}
---- !u!64 &226797627
-MeshCollider:
+--- !u!65 &226797627
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -4983,11 +4968,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 6.3027325, y: 4.6325417, z: 5.6345077}
+  m_Center: {x: -0.6093571, y: -0.18372917, z: -0.31725454}
 --- !u!4 &258340262 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4688457057846484, guid: 7ceac5060a54ceb4d9771e35f3eac4d3,
@@ -6307,29 +6290,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114578260775722830, guid: c87bb43f5518a554c8eaed5992d10c0f,
         type: 2}
-      propertyPath: spawnPoint.x
-      value: 99.72319
-      objectReference: {fileID: 0}
-    - target: {fileID: 114578260775722830, guid: c87bb43f5518a554c8eaed5992d10c0f,
-        type: 2}
-      propertyPath: spawnPoint.y
-      value: 5.881
-      objectReference: {fileID: 0}
-    - target: {fileID: 114578260775722830, guid: c87bb43f5518a554c8eaed5992d10c0f,
-        type: 2}
-      propertyPath: spawnPoint.z
-      value: 252.1926
-      objectReference: {fileID: 0}
-    - target: {fileID: 114578260775722830, guid: c87bb43f5518a554c8eaed5992d10c0f,
-        type: 2}
       propertyPath: prefab
       value: 
       objectReference: {fileID: 507375443}
-    - target: {fileID: 54974947583774876, guid: c87bb43f5518a554c8eaed5992d10c0f,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c87bb43f5518a554c8eaed5992d10c0f, type: 2}
   m_IsPrefabParent: 0
@@ -6506,6 +6469,35 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5fa298a7a640a1846b3e21d413260baf, type: 3}
   m_PrefabInternal: {fileID: 989870981}
+--- !u!1 &496150609 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1084930526734700, guid: 0885c06dd5bfe3742ac3dedb643dd3d6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1875437633}
+--- !u!136 &496150610
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496150609}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0.04, y: -0.3, z: -0.55}
+--- !u!114 &496150611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 496150609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260a326a037970a409a117695ea71e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &497859286
 Prefab:
   m_ObjectHideFlags: 0
@@ -6698,7 +6690,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8e7e0eea08d5acd48a3916058fac0440, type: 3}
@@ -6827,31 +6819,6 @@ Prefab:
       propertyPath: prefab
       value: 
       objectReference: {fileID: 1091240823}
-    - target: {fileID: 114704813176359554, guid: f830209a49578784da3f982beca4b026,
-        type: 2}
-      propertyPath: spawnPoint.x
-      value: 99.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 114704813176359554, guid: f830209a49578784da3f982beca4b026,
-        type: 2}
-      propertyPath: spawnPoint.y
-      value: 5.376
-      objectReference: {fileID: 0}
-    - target: {fileID: 114704813176359554, guid: f830209a49578784da3f982beca4b026,
-        type: 2}
-      propertyPath: spawnPoint.z
-      value: 261.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 65933689148341656, guid: f830209a49578784da3f982beca4b026,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54891671292498532, guid: f830209a49578784da3f982beca4b026,
-        type: 2}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f830209a49578784da3f982beca4b026, type: 2}
   m_IsPrefabParent: 0
@@ -7164,6 +7131,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+--- !u!65 &617115296
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 617115294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 500.00003, y: 498.10968, z: 589.55365}
+  m_Center: {x: -9.766544e-16, y: -40.464188, z: -1.2743951}
 --- !u!1 &619028992
 GameObject:
   m_ObjectHideFlags: 0
@@ -7210,7 +7189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodChecker: {fileID: 31440263}
   whiteboard: {fileID: 525872488}
-  player: {fileID: 20282299}
+  player: {fileID: 1257074081}
   winParticle: {fileID: 1214342202}
 --- !u!23 &619028995
 MeshRenderer:
@@ -7256,8 +7235,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 10, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3001341, y: 14.529161, z: 2.917864}
+  m_Center: {x: 0.0040628654, y: 2.2645814, z: 0.9589322}
 --- !u!33 &619028997
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8950,11 +8929,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114390323278859400, guid: 640d5ea7a91eef54399b9367ed61e9ea,
         type: 2}
-      propertyPath: Door
-      value: 
-      objectReference: {fileID: 903259903}
-    - target: {fileID: 114390323278859400, guid: 640d5ea7a91eef54399b9367ed61e9ea,
-        type: 2}
       propertyPath: SpwnMark
       value: 
       objectReference: {fileID: 1872291731}
@@ -9003,16 +8977,6 @@ Prefab:
       propertyPath: SeatMark.Array.data[3]
       value: 
       objectReference: {fileID: 928724944}
-    - target: {fileID: 114390323278859400, guid: 640d5ea7a91eef54399b9367ed61e9ea,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114390323278859400, guid: 640d5ea7a91eef54399b9367ed61e9ea,
-        type: 2}
-      propertyPath: Boss
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 640d5ea7a91eef54399b9367ed61e9ea, type: 2}
   m_IsPrefabParent: 0
@@ -9544,7 +9508,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 826534201
+  randomSeed: -136509865
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13388,7 +13352,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 381125350
+  randomSeed: 302192218
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21806,6 +21770,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7961e8d1464bc6d4a946600dd26c2822, type: 3}
+--- !u!65 &1421538109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1421538107}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 500.00003, y: 498.10968, z: 589.55365}
+  m_Center: {x: -9.766544e-16, y: -40.464188, z: -1.2743951}
 --- !u!1001 &1423071128
 Prefab:
   m_ObjectHideFlags: 0
@@ -26434,7 +26410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodChecker: {fileID: 1020626778}
   whiteboard: {fileID: 525872488}
-  player: {fileID: 20282299}
+  player: {fileID: 1257074081}
   winParticle: {fileID: 1102455261}
 --- !u!23 &1730074217
 MeshRenderer:
@@ -26480,8 +26456,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 10, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3739216, y: 14.5291605, z: 3.25915}
+  m_Center: {x: 0.040956546, y: 2.2645812, z: -1.000643}
 --- !u!33 &1730074219
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -26683,7 +26659,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodChecker: {fileID: 2000144453}
   whiteboard: {fileID: 525872488}
-  player: {fileID: 20282299}
+  player: {fileID: 1257074081}
   winParticle: {fileID: 1044227513}
 --- !u!23 &1765021727
 MeshRenderer:
@@ -26729,8 +26705,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 10, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3739216, y: 14.5291605, z: 3.25915}
+  m_Center: {x: 0.040956546, y: 2.2645812, z: -1.000643}
 --- !u!33 &1765021729
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -27531,6 +27507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpwnMark: {fileID: 1872291731}
   Customer: {fileID: 1913473619}
+  Boss: {fileID: 28409060}
   Door: {fileID: 903259903}
   Target:
   - {fileID: 1638245113}
@@ -27603,7 +27580,6 @@ GameObject:
   - component: {fileID: 1874253029}
   - component: {fileID: 1874253031}
   - component: {fileID: 1874253030}
-  - component: {fileID: 1874253032}
   m_Layer: 0
   m_Name: pCube25
   m_TagString: Untagged
@@ -27666,20 +27642,6 @@ MeshFilter:
     type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1874253028}
-  m_Mesh: {fileID: 4300002, guid: e6e6b76dd748ca44d9cacf01ad258d64, type: 3}
---- !u!64 &1874253032
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1874253028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: e6e6b76dd748ca44d9cacf01ad258d64, type: 3}
 --- !u!4 &1875098370 stripped
 Transform:
@@ -27846,7 +27808,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1084930526734700, guid: 0885c06dd5bfe3742ac3dedb643dd3d6, type: 2}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1227459187383518, guid: 0885c06dd5bfe3742ac3dedb643dd3d6, type: 2}
       propertyPath: m_IsActive
@@ -28006,8 +27968,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.19018656
-  m_Height: 1.1395984
+  m_Radius: 0.15
+  m_Height: 1
   m_Direction: 1
   m_Center: {x: -0.0076761884, y: 0.5424799, z: 0}
 --- !u!4 &1913473622 stripped
@@ -28026,7 +27988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91bc292f4c76884a97ddc78f9c57914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Door: {fileID: 903259903}
   SpwnMark: {fileID: 1872291731}
   WhiteBoard: {fileID: 525872486}
   Table:
@@ -32198,6 +32159,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 615ed5a1b7a4bca4da588f55fc71bafa, type: 3}
+--- !u!65 &2025903474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2025903472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 500.00003, y: 498.10968, z: 589.55365}
+  m_Center: {x: -9.766544e-16, y: -40.464188, z: -1.2743951}
 --- !u!1001 &2029782883
 Prefab:
   m_ObjectHideFlags: 0
@@ -32790,7 +32763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodChecker: {fileID: 136696250}
   whiteboard: {fileID: 525872488}
-  player: {fileID: 20282299}
+  player: {fileID: 1257074081}
   winParticle: {fileID: 1940638934}
 --- !u!23 &2132825570
 MeshRenderer:
@@ -32836,8 +32809,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 10, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3001341, y: 14.529161, z: 2.917864}
+  m_Center: {x: 0.0040628654, y: 2.2645814, z: 0.9589322}
 --- !u!33 &2132825572
 MeshFilter:
   m_ObjectHideFlags: 0

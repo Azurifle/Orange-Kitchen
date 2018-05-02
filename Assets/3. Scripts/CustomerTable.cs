@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CustomerTable : MonoBehaviour {
 
@@ -8,13 +9,38 @@ public class CustomerTable : MonoBehaviour {
     public Transform player;
     public ParticleSystem winParticle;
 
+    private TextMesh menuNote;
+    private List<Rigidbody> waitToThrows;
+
+    private void Start()
+    {
+        menuNote = foodChecker.text.GetComponent<TextMesh>();
+        waitToThrows = new List<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (menuNote.text != "")
+        {
+            foreach (Rigidbody item in waitToThrows)
+                ThrowBack(item);
+            waitToThrows.Clear();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("BowlFinishing"))
+        {
+            if (other.gameObject.layer == HandController.LAYER_ITEM && !other.CompareTag("Bowl"))
+            {
+                waitToThrows.Add(other.GetComponent<Rigidbody>());
+            }
             return;
+        }
 
         BowlFinishing bowl = other.GetComponent<BowlFinishing>();
-        if (bowl.HasOrangeFishBall &&
+        if (menuNote.text != "" && bowl.HasOrangeFishBall &&
             ((foodChecker.soupReq >= 1 && bowl.HasSoup) || (foodChecker.soupReq <= 0 && !bowl.HasSoup))
             && foodChecker.porkReq == bowl.RedPorkCount && foodChecker.noodleReq == bowl.NoodleCount)
         {
@@ -26,9 +52,15 @@ public class CustomerTable : MonoBehaviour {
         }   
         else
         {
-            bowl.transform.parent.GetComponent<Rigidbody>().AddForce(Vector3.Normalize(
-                Vector3.Normalize(player.position - transform.position)+Vector3.up) * 4000);
+            waitToThrows.Add(bowl.transform.parent.GetComponent<Rigidbody>());
         }
+    }
+
+    private void ThrowBack(Rigidbody item)
+    {
+        if(item)
+            item.AddForce(Vector3.Normalize(
+               (player.position+Vector3.up*2) - transform.position) * 5000);//2500
     }
 
     IEnumerator Wait()

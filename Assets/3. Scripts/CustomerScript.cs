@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomerScript : MonoBehaviour {
 
-    public GameObject Door;
+    //public GameObject Door;
     public GameObject SpwnMark;
     public GameObject WhiteBoard;
     public GameObject[] Table;
@@ -15,7 +15,7 @@ public class CustomerScript : MonoBehaviour {
 
     public ParticleSystem angryParticle;
 
-    private Animator doorAnim;
+    //private Animator doorAnim;
     private Animator customerAnim;
 
     private SpawnScript spwn;
@@ -37,7 +37,7 @@ public class CustomerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        doorAnim = Door.GetComponent<Animator>();
+        //doorAnim = Door.GetComponent<Animator>();
         spwn = SpwnMark.GetComponent<SpawnScript>();
         wBoard = WhiteBoard.GetComponent<WhiteboardScript>();
         customerAnim = this.GetComponent<Animator>();
@@ -152,5 +152,13 @@ public class CustomerScript : MonoBehaviour {
         if (Boss) SpawnScript.SpawnCnt = 0;
 
         Destroy(gameObject, 1);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != HandController.LAYER_ITEM)
+            return;
+
+        other.GetComponent<Item>().Stick(transform);
     }
 }

@@ -44,12 +44,12 @@ public class SpawnScript : MonoBehaviour {
 
                 break;
             }
-            else if (free[i] && SpawnCnt == BOSS_TIME)
+            else if (free[i] && SpawnCnt >= BOSS_TIME)
             {
                 chairNo = i;
                 free[i] = false;
                 bossFree = true;
-                SpawnCnt = 0;//++
+                SpawnCnt = 0;
 
                 break;
             }

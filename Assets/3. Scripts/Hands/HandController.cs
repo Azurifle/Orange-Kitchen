@@ -12,7 +12,7 @@ public class HandController : SixenseObjectController
     {
         Sensitivity = new Vector3(0.004f, 0.004f, 0.004f);//0.002f
     }
-
+    
     protected override void Start()
     {
         base.Start();

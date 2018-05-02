@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FoodCheckerScript : MonoBehaviour
 {
@@ -23,14 +21,7 @@ public class FoodCheckerScript : MonoBehaviour
     [HideInInspector] public GameObject bowl;
 
     public GameObject text;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (isDeliver)

@@ -9,6 +9,8 @@ TagManager:
   - OrangeFishBall
   - Soup
   - BowlFinishing
+  - Hand
+  - Bowl
   layers:
   - Default
   - TransparentFX

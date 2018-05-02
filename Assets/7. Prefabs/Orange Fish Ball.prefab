@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4221240166432538}
   - component: {fileID: 95152441282024834}
   - component: {fileID: 54974947583774876}
-  - component: {fileID: 65130156345852338}
   - component: {fileID: 122485193605513090}
   - component: {fileID: 114578260775722830}
+  - component: {fileID: 64060781248294002}
   m_Layer: 8
   m_Name: Orange Fish Ball
   m_TagString: OrangeFishBall
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261328216647934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 99.72319, y: 5.881, z: 252.1926}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4795878666531542}
@@ -205,8 +205,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65130156345852338
-BoxCollider:
+--- !u!64 &64060781248294002
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -214,9 +214,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.8110285, z: 0.1250763}
-  m_Center: {x: 0, y: 0.08336735, z: -0.0044021606}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 5414b5b9049d3ed448ca77653aaa1510, type: 3}
 --- !u!95 &95152441282024834
 Animator:
   serializedVersion: 3
@@ -248,8 +250,8 @@ MonoBehaviour:
   grabbedPosition: {x: 0, y: 0, z: 0}
   grabbedRotation: {x: 0, y: 0, z: 0}
   isSpawner: 1
-  prefab: {fileID: 4221240166432538}
-  spawnPoint: {x: 0, y: 0, z: 0}
+  prefab: {fileID: 0}
+  spawnPoint: {x: 99.72319, y: 5.881, z: 252.1926}
   spawnRotation: {x: 0, y: 0, z: 0}
 --- !u!122 &122485193605513090
 Halo:

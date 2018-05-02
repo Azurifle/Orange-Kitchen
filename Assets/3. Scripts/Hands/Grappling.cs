@@ -49,7 +49,8 @@ public class Grappling : MonoBehaviour {
             case GRABBING:
                 if (!hand.IsGrabbing())
                 {
-                    _nearestItem.Throwed(_handVelocity * throwForce);
+                    if(_nearestItem)
+                        _nearestItem.Throwed(_handVelocity * throwForce);
                     _mode = NOT_GRAB;
                 }
                 break;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Item : MonoBehaviour
@@ -46,6 +47,7 @@ public class Item : MonoBehaviour
 
     internal void Grabbed(Transform grabCenterPoint)
     {
+        gameObject.layer = HandController.LAYER_HAND;
         rigidbody.isKinematic = true;
         transform.SetParent(grabCenterPoint);
         transform.localPosition = grabbedPosition;
@@ -69,10 +71,15 @@ public class Item : MonoBehaviour
 
     internal void Throwed(Vector3 vector3)
     {
-        if (transform == null)
-            return;
+        gameObject.layer = HandController.LAYER_ITEM;
         transform.SetParent(null);
         rigidbody.isKinematic = false;
         rigidbody.AddForce(vector3);
+    }
+
+    internal void Stick(Transform transform)
+    {
+        rigidbody.isKinematic = true;
+        this.transform.SetParent(transform);
     }
 }
