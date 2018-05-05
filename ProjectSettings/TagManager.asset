@@ -11,6 +11,7 @@ TagManager:
   - BowlFinishing
   - Hand
   - Bowl
+  - Knife
   layers:
   - Default
   - TransparentFX

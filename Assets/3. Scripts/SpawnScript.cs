@@ -14,7 +14,7 @@ public class SpawnScript : MonoBehaviour {
 
     public Transform[] Target;
 
-    private const int BOSS_TIME = 8;//20
+    private int _boss_time = 7;
 
     private Animator doorAnim;
 
@@ -35,7 +35,7 @@ public class SpawnScript : MonoBehaviour {
 
         for (int i = 0; i < 4; i++)
         {
-            if (free[i] && SpawnCnt < BOSS_TIME)
+            if (free[i] && SpawnCnt < _boss_time)
             {
                 chairNo = i;
                 free[i] = false;
@@ -44,7 +44,7 @@ public class SpawnScript : MonoBehaviour {
 
                 break;
             }
-            else if (free[i] && SpawnCnt >= BOSS_TIME)
+            else if (free[i] && SpawnCnt >= _boss_time)
             {
                 chairNo = i;
                 free[i] = false;
@@ -70,6 +70,7 @@ public class SpawnScript : MonoBehaviour {
             GameObject newOne = Instantiate(Boss, point, Quaternion.identity);//Customer
 
             newOne.GetComponent<CustomerScript>().RealOne = false;
+            _boss_time = Random.Range(1, 5);
 
             StartCoroutine(DoorActivate());
         }

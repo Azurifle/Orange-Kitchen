@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerScript : MonoBehaviour {
@@ -14,6 +13,9 @@ public class CustomerScript : MonoBehaviour {
     public bool Boss;
 
     public ParticleSystem angryParticle;
+    public LifeBar playerLife;
+    public TextMesh timeText;
+    public TextMesh timeTextOutline;
 
     //private Animator doorAnim;
     private Animator customerAnim;
@@ -29,11 +31,12 @@ public class CustomerScript : MonoBehaviour {
     private bool ready = false;
     private bool timeCount = false;
     private bool timeOut = false;
+    private bool countDownWaitToLeave = false;
     private bool waitToLeave = false;
 
     private int target;
 
-    private float timeLeft = 150.0f;
+    private float timeLeft = 120.0f;
 
     // Use this for initialization
     void Start () {
@@ -43,6 +46,9 @@ public class CustomerScript : MonoBehaviour {
         customerAnim = this.GetComponent<Animator>();
 
         target = SpawnScript.chairNo;
+
+        if (Boss)
+            timeLeft /= 4f;
     }
 	
 	// Update is called once per frame
@@ -51,8 +57,24 @@ public class CustomerScript : MonoBehaviour {
         {
             if (Vector3.Distance(transform.position, SeatMark[target].transform.position) <= 4.0f) atSeat = true;
             if (Vector3.Distance(transform.position, spwn.Target[target].transform.position) <= 4.0f) ready = true;
-            if (timeCount) timeLeft -= Time.deltaTime;
-            if (timeLeft < 0 && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver) timeOut = true;
+            if (timeCount)
+            {
+                if (LifeBar.IS_KITCHEN_CLOSED)
+                {
+                    timeCount = false;
+                    timeLeft = 0f;
+                }
+                else
+                    timeLeft -= Time.deltaTime;
+
+                timeText.text = Mathf.CeilToInt(timeLeft).ToString();
+                timeTextOutline.text = Mathf.CeilToInt(timeLeft).ToString();
+            }
+
+            if (timeLeft <= 0 && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver)
+            {
+                timeOut = true;
+            } 
 
             if (!atSeat && !ready)
             {
@@ -84,14 +106,27 @@ public class CustomerScript : MonoBehaviour {
 
                 if (angryParticle.isStopped && !wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver
                     && timeOut)
+                {
                     angryParticle.Play();
+                    if(Boss)
+                        playerLife.Decrease(3);
+                    else
+                        playerLife.Decrease(1);
+                }
 
                 if (wBoard.notes[target].GetComponent<FoodCheckerScript>().isDeliver || timeOut)
                 {
+                    timeCount = false;
+                    timeText.text = "";
+                    timeTextOutline.text = "";
+
                     if (!isleaving)
                     {
                         if (!waitToLeave)
-                            StartCoroutine(WaitToLeave());
+                        {
+                            if (!countDownWaitToLeave)
+                                StartCoroutine(WaitToLeave());
+                        }
                         else
                         {
                             transform.position = Vector3.MoveTowards(transform.position, SeatMark[target].transform.position,
@@ -129,6 +164,7 @@ public class CustomerScript : MonoBehaviour {
 
     IEnumerator WaitToLeave ()
     {
+        countDownWaitToLeave = true;
         float t;
 
         if (Boss) t = 1.0f;
@@ -137,6 +173,7 @@ public class CustomerScript : MonoBehaviour {
         yield return new WaitForSeconds(t);
 
         waitToLeave = true;
+        wBoard.FinishOrder(target);
     }
 
     IEnumerator Leaving()

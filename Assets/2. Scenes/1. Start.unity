@@ -1735,7 +1735,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Start !!
+  m_Text: Press <Bumper> to Start !!
 --- !u!222 &262309173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2565,7 +2565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press Start !!
+  m_Text: Press <Bumper> to Start !!
 --- !u!222 &487337771
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33114678607463978}
   - component: {fileID: 23508773326020386}
   - component: {fileID: 95946333479953416}
-  - component: {fileID: 64577264464950262}
   m_Layer: 0
   m_Name: RedPork_Head (1)
   m_TagString: Untagged
@@ -41,7 +40,6 @@ GameObject:
   - component: {fileID: 33767393197120176}
   - component: {fileID: 23142611553104782}
   - component: {fileID: 95425784449089220}
-  - component: {fileID: 64241096098256742}
   m_Layer: 0
   m_Name: RedPork (4)
   m_TagString: Untagged
@@ -60,7 +58,6 @@ GameObject:
   - component: {fileID: 33331377917481336}
   - component: {fileID: 23085155529150100}
   - component: {fileID: 95103608212956112}
-  - component: {fileID: 64391753918494706}
   m_Layer: 0
   m_Name: RedPork
   m_TagString: Untagged
@@ -79,7 +76,6 @@ GameObject:
   - component: {fileID: 33312058784745478}
   - component: {fileID: 23265020515049184}
   - component: {fileID: 95452943040330008}
-  - component: {fileID: 64414845604271150}
   m_Layer: 0
   m_Name: RedPork (1)
   m_TagString: Untagged
@@ -96,8 +92,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4187829088271606}
   - component: {fileID: 54912819606378438}
-  - component: {fileID: 114475145947582006}
+  - component: {fileID: 114205991975764532}
   - component: {fileID: 122823788512612360}
+  - component: {fileID: 65729507178830182}
   m_Layer: 8
   m_Name: RedPork
   m_TagString: Untagged
@@ -116,7 +113,6 @@ GameObject:
   - component: {fileID: 33659130050499004}
   - component: {fileID: 23181528603250442}
   - component: {fileID: 95851662138661138}
-  - component: {fileID: 64094732789205790}
   m_Layer: 0
   m_Name: RedPork_Head
   m_TagString: Untagged
@@ -135,7 +131,6 @@ GameObject:
   - component: {fileID: 33877114197402862}
   - component: {fileID: 23213044265704884}
   - component: {fileID: 95005898806674456}
-  - component: {fileID: 64325015040531218}
   m_Layer: 0
   m_Name: RedPork Middle
   m_TagString: Untagged
@@ -154,7 +149,6 @@ GameObject:
   - component: {fileID: 33335957035428426}
   - component: {fileID: 23422407831502854}
   - component: {fileID: 95602551622316578}
-  - component: {fileID: 64038569440421264}
   m_Layer: 0
   m_Name: RedPork (3)
   m_TagString: Untagged
@@ -582,104 +576,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64038569440421264
-MeshCollider:
+--- !u!65 &65729507178830182
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1966771722411524}
+  m_GameObject: {fileID: 1654373216593920}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 65e5e85f14fdb634f8c2191a71213668, type: 3}
---- !u!64 &64094732789205790
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1847201615873858}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bcee9666f8a345046aafdc5e83e4e84f, type: 3}
---- !u!64 &64241096098256742
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1063713948865194}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 65e5e85f14fdb634f8c2191a71213668, type: 3}
---- !u!64 &64325015040531218
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1896567021894100}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 65e5e85f14fdb634f8c2191a71213668, type: 3}
---- !u!64 &64391753918494706
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238024391241936}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 65e5e85f14fdb634f8c2191a71213668, type: 3}
---- !u!64 &64414845604271150
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1379905798819626}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 65e5e85f14fdb634f8c2191a71213668, type: 3}
---- !u!64 &64577264464950262
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1029381030491142}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: bcee9666f8a345046aafdc5e83e4e84f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.7202835, y: 0.24943161, z: 1}
+  m_Center: {x: 0.00011062622, y: -0.00040864944, z: 0}
 --- !u!95 &95005898806674456
 Animator:
   serializedVersion: 3
@@ -799,7 +707,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114475145947582006
+--- !u!114 &114205991975764532
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -807,15 +715,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1654373216593920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aeefdd9dd5f90d4d86ceaa8b45bdf92, type: 3}
+  m_Script: {fileID: 11500000, guid: 31047a348ef32314da6521a6d853296a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbedPosition: {x: 0, y: 0, z: 0}
-  grabbedRotation: {x: 0, y: 0, z: 0}
-  isSpawner: 0
-  prefab: {fileID: 4187829088271606}
-  spawnPoint: {x: 0, y: 0, z: 0}
+  grabbedPosition: {x: 0, y: -0.1, z: 0.3}
+  grabbedRotation: {x: 0, y: 0, z: 90}
+  isSpawner: 1
+  prefab: {fileID: 0}
+  spawnPoint: {x: 93.308, y: 5.651, z: 249.566}
   spawnRotation: {x: 0, y: 0, z: 0}
+  prefab_Middle: {fileID: 0}
+  prefab_Head: {fileID: 0}
 --- !u!122 &122823788512612360
 Halo:
   m_ObjectHideFlags: 1

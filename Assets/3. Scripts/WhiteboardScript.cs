@@ -27,6 +27,8 @@ public class WhiteboardScript : MonoBehaviour {
     public void FinishOrder (int i)
     {
         notes[i].GetComponent<FoodCheckerScript>().isDeliver = true;
-        SpawnScript.free[i] = true;
+
+        if(!LifeBar.IS_KITCHEN_CLOSED)
+            SpawnScript.free[i] = true;
     }
 }
