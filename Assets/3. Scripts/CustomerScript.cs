@@ -48,7 +48,7 @@ public class CustomerScript : MonoBehaviour {
         target = SpawnScript.chairNo;
 
         if (Boss)
-            timeLeft /= 4f;
+            timeLeft /= 3f;
     }
 	
 	// Update is called once per frame
@@ -186,7 +186,7 @@ public class CustomerScript : MonoBehaviour {
 
         spwn.Door.GetComponent<Animator>().SetBool("IsOpen", false);
 
-        if (Boss) SpawnScript.SpawnCnt = 0;
+        //if (Boss) SpawnScript.SpawnCnt = 0;
 
         Destroy(gameObject, 1);
     }
